@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TJT Tecnologia — Soluções Digitais que Convertem</title>
+
+  <!-- ═══════════════════════════════════════
+       PIXELS — Substitua pelos seus IDs reais
+  ═══════════════════════════════════════ -->
+
+  <!-- Meta (Facebook) Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window,document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'SEU_PIXEL_ID_AQUI'); // ← substitua
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=SEU_PIXEL_ID_AQUI&ev=PageView&noscript=1"/>
+  </noscript>
+
+  <!-- Google Tag Manager (substitua GTM-XXXXXXX) -->
+  <script>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-XXXXXXX'); // ← substitua
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── TOKENS ─────────────────────────────── */
+    :root {
+      --bg:         #0b0d10;
+      --surface:    #13161c;
+      --border:     #1f2430;
+      --accent:     #00e5a0;
+      --accent2:    #0077ff;
+      --text:       #f0f4ff;
+      --muted:      #7b8299;
+      --error:      #ff4d6a;
+      --radius:     14px;
+      --pill:       999px;
+      --font-head:  'Sora', sans-serif;
+      --font-body:  'DM Sans', sans-serif;
+      --trans:      .18s ease;
+    }
+
+    /* ─── RESET ──────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      min-height: 100dvh;
+      overflow-x: hidden;
+    }
+
+    /* ─── NOISE OVERLAY ──────────────────────── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
+      background-size: 200px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ─── GLOW BLOBS ─────────────────────────── */
+    .blob {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: .18;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .blob-1 { width: 420px; height: 420px; background: var(--accent);  top: -100px; left: -100px; }
+    .blob-2 { width: 340px; height: 340px; background: var(--accent2); bottom: -80px; right: -80px; }
+
+    /* ─── LAYOUT ─────────────────────────────── */
+    .wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    /* ─── LOGO / BRAND ───────────────────────── */
+    .brand {
+      text-align: center;
+    }
+    .brand-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-head);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .brand-icon {
+      width: 38px; height: 38px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border-radius: 10px;
+      display: grid; place-items: center;
+      font-size: 1.1rem;
+    }
+
+    /* ─── HERO TEXT ──────────────────────────── */
+    .hero { text-align: center; }
+    .badge {
+      display: inline-block;
+      background: rgba(0,229,160,.1);
+      border: 1px solid rgba(0,229,160,.3);
+      color: var(--accent);
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: var(--pill);
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(1.75rem, 6vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      color: var(--muted);
+      font-size: .95rem;
+      max-width: 380px;
+      margin: 0 auto;
+    }
+
+    /* ─── CARD ───────────────────────────────── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+    }
+
+    /* ─── SECTION LABEL ──────────────────────── */
+    .section-label {
+      font-family: var(--font-head);
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    /* ─── CHIP SELECTOR ──────────────────────── */
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+    .chip-input { display: none; }
+    .chip-label {
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: var(--pill);
+      border: 1.5px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      font-size: .875rem;
+      font-weight: 500;
+      transition: background var(--trans), border-color var(--trans), color var(--trans), transform .12s ease;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .chip-label:hover { border-color: var(--accent); color: var(--accent); }
+    .chip-input:checked + .chip-label {
+      background: rgba(0,229,160,.12);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .chip-label:active { transform: scale(.95); }
+    .chip-icon { font-size: 1rem; }
+
+    /* ─── FORM ───────────────────────────────── */
+    .form { display: flex; flex-direction: column; gap: 14px; }
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field label {
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: .03em;
+    }
+    .field input {
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 13px 16px;
+      font-size: .95rem;
+      font-family: var(--font-body);
+      color: var(--text);
+      outline: none;
+      transition: border-color var(--trans), box-shadow var(--trans);
+      -webkit-appearance: none;
+    }
+    .field input::placeholder { color: var(--muted); }
+    .field input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(0,229,160,.12);
+    }
+    .field input.error { border-color: var(--error); }
+    .field-error {
+      font-size: .75rem;
+      color: var(--error);
+      display: none;
+    }
+    .field-error.show { display: block; }
+
+    /* ─── SUBMIT BUTTON ──────────────────────── */
+    .btn-submit {
+      width: 100%;
+      padding: 16px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-head);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: .02em;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+      color: #0b0d10;
+      transition: opacity var(--trans), transform var(--trans), box-shadow var(--trans);
+      box-shadow: 0 4px 24px rgba(0,229,160,.25);
+      margin-top: 4px;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-submit:hover:not(:disabled) { opacity: .92; transform: translateY(-1px); box-shadow: 0 8px 32px rgba(0,229,160,.35); }
+    .btn-submit:active:not(:disabled) { transform: scale(.98); }
+    .btn-submit:disabled { opacity: .5; cursor: not-allowed; }
+    .btn-text { display: flex; align-items: center; justify-content: center; gap: 8px; }
+
+    /* spinner */
+    .spinner {
+      display: none;
+      width: 20px; height: 20px;
+      border: 2px solid rgba(0,0,0,.2);
+      border-top-color: #0b0d10;
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .btn-submit.loading .btn-text { display: none; }
+    .btn-submit.loading .spinner { display: block; }
+
+    /* ─── PRIVACY NOTE ───────────────────────── */
+    .privacy {
+      text-align: center;
+      font-size: .72rem;
+      color: var(--muted);
+    }
+    .privacy a { color: var(--muted); text-decoration: underline; }
+
+    /* ─── SUCCESS STATE ──────────────────────── */
+    .success-screen {
+      display: none;
+      text-align: center;
+      padding: 40px 0;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      animation: fadeUp .4s ease forwards;
+    }
+    .success-icon {
+      width: 72px; height: 72px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border-radius: 50%;
+      display: grid; place-items: center;
+      font-size: 2rem;
+    }
+    .success-screen h2 {
+      font-family: var(--font-head);
+      font-size: 1.5rem;
+      font-weight: 800;
+    }
+    .success-screen p { color: var(--muted); font-size: .9rem; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── TRUST STRIP ────────────────────────── */
+    .trust {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .78rem;
+      color: var(--muted);
+    }
+    .trust-item span { font-size: 1rem; }
+
+    /* ─── ANIMATIONS ─────────────────────────── */
+    .wrapper > * {
+      opacity: 0;
+      transform: translateY(18px);
+      animation: fadeUp .5s ease forwards;
+    }
+    .wrapper > *:nth-child(1) { animation-delay: .05s; }
+    .wrapper > *:nth-child(2) { animation-delay: .15s; }
+    .wrapper > *:nth-child(3) { animation-delay: .25s; }
+    .wrapper > *:nth-child(4) { animation-delay: .32s; }
+    .wrapper > *:nth-child(5) { animation-delay: .38s; }
+    .wrapper > *:nth-child(6) { animation-delay: .44s; }
+  </style>
+</head>
+<body>
+
+<!-- GTM noscript (logo após abertura de <body>) -->
+<noscript>
+  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+
+<!-- Blobs de fundo -->
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+
+<div class="wrapper">
+
+  <!-- LOGO -->
+  <div class="brand">
+    <a href="https://tjttecnologiaportfolio.vercel.app" class="brand-logo" target="_blank" rel="noopener">
+      <div class="brand-icon">⚡</div>
+      TJT Tecnologia
+    </a>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="badge">✦ Vagas Limitadas</div>
+    <h1>Seu negócio pronto para<br><em>vender online</em> de verdade</h1>
+    <p>Sites, apps e automações que atraem clientes e geram resultados — sem enrolação e com suporte real.</p>
+  </div>
+
+  <!-- CHIPS — interesses/segmento -->
+  <div class="card">
+    <div class="section-label">O que você quer resolver?</div>
+    <div class="chips" id="chips">
+
+      <!-- ► Adicione/remova chips conforme o projeto.
+           O value do checkbox vira a SUBTAG enviada ao CRM. -->
+
+      <input class="chip-input" type="checkbox" name="interesse" id="c1" value="site-wordpress">
+      <label class="chip-label" for="c1"><span class="chip-icon">🌐</span> Site / WordPress</label>
+
+      <input class="chip-input" type="checkbox" name="interesse" id="c2" value="loja-ecommerce">
+      <label class="chip-label" for="c2"><span class="chip-icon">🛒</span> Loja Virtual</label>
+
+      <input class="chip-input" type="checkbox" name="interesse" id="c3" value="app-mobile">
+      <label class="chip-label" for="c3"><span class="chip-icon">📱</span> App Mobile</label>
+
+      <input class="chip-input" type="checkbox" name="interesse" id="c4" value="automacao">
+      <label class="chip-label" for="c4"><span class="chip-icon">⚙️</span> Automação</label>
+
+      <input class="chip-input" type="checkbox" name="interesse" id="c5" value="design-ui">
+      <label class="chip-label" for="c5"><span class="chip-icon">🎨</span> Design UI/UX</label>
+
+      <input class="chip-input" type="checkbox" name="interesse" id="c6" value="integracao-api">
+      <label class="chip-label" for="c6"><span class="chip-icon">🔗</span> Integração / API</label>
+
+    </div>
+  </div>
+
+  <!-- FORMULÁRIO -->
+  <div class="card" id="form-card">
+    <div id="form-area">
+      <div class="form" id="lead-form">
+
+        <div class="field">
+          <label for="nome">Seu nome</label>
+          <input type="text" id="nome" name="nome" placeholder="João Silva" autocomplete="name" inputmode="text" />
+          <span class="field-error" id="err-nome">Por favor, informe seu nome.</span>
+        </div>
+
+        <div class="field">
+          <label for="whatsapp">WhatsApp</label>
+          <input type="tel" id="whatsapp" name="whatsapp" placeholder="(11) 9 0000-0000" autocomplete="tel" inputmode="tel" />
+          <span class="field-error" id="err-whatsapp">Informe um número válido.</span>
+        </div>
+
+        <div class="field">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" placeholder="joao@email.com" autocomplete="email" inputmode="email" />
+          <span class="field-error" id="err-email">Informe um e-mail válido.</span>
+        </div>
+
+        <button class="btn-submit" id="btn-submit" type="button" onclick="handleSubmit()">
+          <div class="btn-text">Quero participar →</div>
+          <div class="spinner"></div>
+        </button>
+
+        <p class="privacy">
+          🔒 Seus dados estão seguros. Sem spam.<br>
+          <a href="#">Política de Privacidade</a>
+        </p>
+      </div>
+
+      <!-- Tela de sucesso (dentro do card) -->
+      <div class="success-screen" id="success-screen">
+        <div class="success-icon">✓</div>
+        <h2>Você está dentro!</h2>
+        <p>Estamos te redirecionando para o grupo do WhatsApp…</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRUST STRIP -->
+  <div class="trust">
+    <div class="trust-item"><span>🔒</span> 100% seguro</div>
+    <div class="trust-item"><span>✅</span> Sem spam</div>
+    <div class="trust-item"><span>⚡</span> Acesso imediato</div>
+  </div>
+
+</div><!-- /wrapper -->
+
+<script>
+/* ═══════════════════════════════════════════════════
+   CONFIGURAÇÕES — edite aqui
+═══════════════════════════════════════════════════ */
+const CONFIG = {
+  // URL do grupo de WhatsApp para redirecionamento após envio
+  whatsappGroupUrl: 'https://chat.whatsapp.com/SEU_LINK_AQUI',
+
+  // Tag principal enviada ao CRM para todos os leads desta página
+  crmTagPrincipal: 'lead-tjt-lp',
+
+  // Delay (ms) antes de redirecionar (para o pixel disparar)
+  redirectDelay: 1800,
+
+  // ── INTEGRAÇÃO CRM ──────────────────────────────
+  // Substitua pela URL do webhook/endpoint do seu CRM
+  // Ex: RD Station, ActiveCampaign, HubSpot, etc.
+  crmWebhookUrl: 'https://SEU-CRM.com/api/leads',
+
+  // Método HTTP ('POST' na maioria dos CRMs)
+  crmMethod: 'POST',
+
+  // Cabeçalhos extras (ex: Authorization: Bearer TOKEN)
+  crmHeaders: {
+    'Content-Type': 'application/json',
+    // 'Authorization': 'Bearer SEU_TOKEN'
+  }
+};
+
+/* ═══════════════════════════════════════════════════
+   MÁSCARA DE TELEFONE
+═══════════════════════════════════════════════════ */
+document.getElementById('whatsapp').addEventListener('input', function(e) {
+  let v = e.target.value.replace(/\D/g, '').slice(0, 11);
+  if (v.length > 2)  v = '(' + v.slice(0,2) + ') ' + v.slice(2);
+  if (v.length > 11) v = v.slice(0,11) + '-' + v.slice(11);
+  if (v.replace(/\D/g,'').length > 6) {
+    const digits = v.replace(/\D/g,'');
+    const ddd = digits.slice(0,2);
+    const rest = digits.slice(2);
+    if (rest.length <= 8) {
+      v = `(${ddd}) ${rest.slice(0,5)}-${rest.slice(5)}`;
+    }
+  }
+  e.target.value = v;
+});
+
+/* ═══════════════════════════════════════════════════
+   VALIDAÇÃO
+═══════════════════════════════════════════════════ */
+function validate() {
+  let ok = true;
+
+  const nome = document.getElementById('nome').value.trim();
+  setError('nome', !nome || nome.length < 2);
+  if (!nome || nome.length < 2) ok = false;
+
+  const tel = document.getElementById('whatsapp').value.replace(/\D/g,'');
+  setError('whatsapp', tel.length < 10);
+  if (tel.length < 10) ok = false;
+
+  const email = document.getElementById('email').value.trim();
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  setError('email', !emailOk);
+  if (!emailOk) ok = false;
+
+  return ok;
+}
+
+function setError(field, hasError) {
+  const input = document.getElementById(field);
+  const errEl = document.getElementById('err-' + field);
+  if (hasError) {
+    input.classList.add('error');
+    errEl.classList.add('show');
+  } else {
+    input.classList.remove('error');
+    errEl.classList.remove('show');
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   CHIPS → SUBTAGS
+═══════════════════════════════════════════════════ */
+function getSelectedSubtags() {
+  return [...document.querySelectorAll('.chip-input:checked')].map(el => el.value);
+}
+
+/* ═══════════════════════════════════════════════════
+   ENVIO AO CRM
+═══════════════════════════════════════════════════ */
+async function sendToCRM(payload) {
+  try {
+    const res = await fetch(CONFIG.crmWebhookUrl, {
+      method: CONFIG.crmMethod,
+      headers: CONFIG.crmHeaders,
+      body: JSON.stringify(payload)
+    });
+    if (!res.ok) console.warn('[CRM] status', res.status);
+  } catch (err) {
+    // Não bloquear o fluxo por falha no CRM
+    console.error('[CRM] erro:', err);
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   DISPARO DE PIXELS
+═══════════════════════════════════════════════════ */
+function fireLeadPixels(data) {
+  // Meta Pixel — evento Lead
+  if (typeof fbq === 'function') {
+    fbq('track', 'Lead', {
+      content_name: CONFIG.crmTagPrincipal,
+      content_category: data.subtags.join(',')
+    });
+  }
+
+  // Google Analytics / GTM — push para dataLayer
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: 'generate_lead',
+    lead_tag: CONFIG.crmTagPrincipal,
+    lead_subtags: data.subtags,
+  });
+}
+
+/* ═══════════════════════════════════════════════════
+   HANDLER PRINCIPAL
+═══════════════════════════════════════════════════ */
+async function handleSubmit() {
+  if (!validate()) return;
+
+  const btn = document.getElementById('btn-submit');
+  btn.classList.add('loading');
+  btn.disabled = true;
+
+  const payload = {
+    nome:         document.getElementById('nome').value.trim(),
+    telefone:     document.getElementById('whatsapp').value.replace(/\D/g,''),
+    email:        document.getElementById('email').value.trim().toLowerCase(),
+    tag:          CONFIG.crmTagPrincipal,
+    subtags:      getSelectedSubtags(),
+    origem:       document.referrer || 'direto',
+    capturado_em: new Date().toISOString(),
+    utm: {
+      source:   new URLSearchParams(location.search).get('utm_source')   || '',
+      medium:   new URLSearchParams(location.search).get('utm_medium')   || '',
+      campaign: new URLSearchParams(location.search).get('utm_campaign') || '',
+    }
+  };
+
+  // Dispara pixel ANTES de aguardar o CRM
+  fireLeadPixels(payload);
+
+  // Envia ao CRM em paralelo (não bloqueia redirect)
+  sendToCRM(payload);
+
+  // Mostra tela de sucesso
+  document.getElementById('lead-form').style.display = 'none';
+  const ss = document.getElementById('success-screen');
+  ss.style.display = 'flex';
+
+  // Redireciona para WhatsApp
+  setTimeout(() => {
+    window.location.href = CONFIG.whatsappGroupUrl;
+  }, CONFIG.redirectDelay);
+}
+
+/* ═══════════════════════════════════════════════════
+   REMOVE erro ao digitar
+═══════════════════════════════════════════════════ */
+['nome','whatsapp','email'].forEach(id => {
+  document.getElementById(id).addEventListener('input', () => setError(id, false));
+});
+</script>
+
+</body>
+</html>
