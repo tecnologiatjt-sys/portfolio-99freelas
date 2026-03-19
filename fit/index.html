@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rafael Souza · Personal Trainer — Seu Corpo. Seu Método.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --black:   #060608;
+      --dark:    #0e0e12;
+      --card:    #13131a;
+      --border:  #1e1e28;
+      --red:     #e8222a;
+      --red2:    #ff4b52;
+      --text:    #f2f2f5;
+      --muted:   #6b6b80;
+      --light:   #b0b0c8;
+      --font-h:  'Bebas Neue', sans-serif;
+      --font-b:  'DM Sans', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--black);
+      color: var(--text);
+      font-family: var(--font-b);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ════════════════════
+       NAVBAR
+    ════════════════════ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 16px 0;
+      background: rgba(6,6,8,.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-family: var(--font-h);
+      font-size: 1.5rem;
+      letter-spacing: .06em;
+    }
+    .logo span { color: var(--red); }
+    .nav-links {
+      display: flex; gap: 32px; list-style: none;
+    }
+    .nav-links a {
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color .15s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-btn {
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      background: var(--red);
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 2px;
+      transition: background .15s, transform .12s;
+    }
+    .nav-btn:hover { background: var(--red2); transform: translateY(-1px); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); }
+
+    /* ════════════════════
+       HERO
+    ════════════════════ */
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 100px 0 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* grade de fundo */
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(232,34,42,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(232,34,42,.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 70% 80% at 50% 50%, black, transparent);
+    }
+    /* glow vermelho */
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: rgba(232,34,42,.08);
+      filter: blur(80px);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .hero-left {
+      position: relative;
+      z-index: 1;
+      padding-right: 40px;
+    }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 20px;
+    }
+    .hero-tag-line {
+      width: 28px; height: 1px;
+      background: var(--red);
+    }
+
+    .hero h1 {
+      font-family: var(--font-h);
+      font-size: clamp(3.5rem, 8vw, 6.5rem);
+      line-height: .95;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .hero h1 .outline {
+      -webkit-text-stroke: 1.5px var(--text);
+      color: transparent;
+    }
+    .hero h1 .red { color: var(--red); }
+
+    .hero-desc {
+      font-size: .97rem;
+      color: var(--light);
+      line-height: 1.75;
+      max-width: 420px;
+      margin-bottom: 36px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      font-family: var(--font-b);
+      font-size: .88rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      background: var(--red);
+      color: #fff;
+      padding: 15px 32px;
+      border-radius: 2px;
+      border: none;
+      cursor: pointer;
+      transition: background .15s, transform .12s, box-shadow .15s;
+      box-shadow: 0 4px 24px rgba(232,34,42,.3);
+    }
+    .btn-primary:hover { background: var(--red2); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(232,34,42,.4); }
+    .btn-ghost {
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex; align-items: center; gap: 8px;
+      transition: color .15s;
+    }
+    .btn-ghost:hover { color: var(--text); }
+    .btn-ghost svg { width: 18px; height: 18px; }
+
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+    .stat-num {
+      font-family: var(--font-h);
+      font-size: 2.4rem;
+      color: var(--red);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* lado direito hero — visual */
+    .hero-right {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-visual {
+      position: relative;
+      width: 100%;
+      max-width: 440px;
+    }
+    /* card principal com avatar */
+    .hero-photo {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-photo::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(6,6,8,.95) 100%);
+    }
+    /* avatar SVG simulando silhueta */
+    .avatar-bg {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 30%;
+      background: linear-gradient(160deg, #1a1a24 0%, #0e0e14 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .avatar-bg svg { width: 180px; opacity: .7; }
+
+    .photo-info {
+      position: relative;
+      z-index: 1;
+      text-align: left;
+      width: 100%;
+    }
+    .photo-name {
+      font-family: var(--font-h);
+      font-size: 1.8rem;
+      letter-spacing: .04em;
+    }
+    .photo-role {
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--red);
+    }
+
+    /* badge flutuante */
+    .hero-badge {
+      position: absolute;
+      top: 24px; right: -16px;
+      background: var(--red);
+      color: #fff;
+      font-family: var(--font-h);
+      font-size: 1rem;
+      letter-spacing: .06em;
+      padding: 10px 18px;
+      border-radius: 2px;
+      box-shadow: 0 4px 20px rgba(232,34,42,.4);
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      transform: rotate(180deg);
+    }
+
+    /* pill resultado */
+    .result-pill {
+      position: absolute;
+      bottom: -16px; left: -16px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,.5);
+    }
+    .pill-icon {
+      width: 36px; height: 36px;
+      background: rgba(232,34,42,.12);
+      border-radius: 2px;
+      display: grid; place-items: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .pill-num {
+      font-family: var(--font-h);
+      font-size: 1.4rem;
+      color: var(--red);
+      line-height: 1;
+    }
+    .pill-label { font-size: .7rem; color: var(--muted); }
+
+    /* ════════════════════
+       STRIP
+    ════════════════════ */
+    .strip {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--dark);
+      padding: 16px 0;
+      overflow: hidden;
+    }
+    .strip-track {
+      display: flex;
+      gap: 56px;
+      white-space: nowrap;
+      animation: marquee 20s linear infinite;
+    }
+    .strip-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-h);
+      font-size: 1rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      flex-shrink: 0;
+    }
+    .strip-item .dot { width: 5px; height: 5px; background: var(--red); border-radius: 50%; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ════════════════════
+       SEÇÕES COMUNS
+    ════════════════════ */
+    section { padding: 80px 0; position: relative; z-index: 1; }
+    .s-eyebrow {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 10px;
+    }
+    .s-title {
+      font-family: var(--font-h);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: .02em;
+      margin-bottom: 16px;
+    }
+    .s-title .outline {
+      -webkit-text-stroke: 1.5px var(--text);
+      color: transparent;
+    }
+    .s-sub {
+      font-size: .92rem;
+      color: var(--light);
+      line-height: 1.75;
+      max-width: 520px;
+    }
+
+    /* ════════════════════
+       METODOLOGIA
+    ════════════════════ */
+    .method { background: var(--dark); }
+    .method-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .method-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 32px;
+    }
+    .method-step {
+      display: flex;
+      gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: flex-start;
+    }
+    .method-step:last-child { border-bottom: none; }
+    .step-n {
+      font-family: var(--font-h);
+      font-size: 2rem;
+      color: rgba(232,34,42,.25);
+      line-height: 1;
+      width: 36px;
+      flex-shrink: 0;
+      transition: color .2s;
+    }
+    .method-step:hover .step-n { color: var(--red); }
+    .step-name {
+      font-size: .9rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+      margin-top: 4px;
+    }
+    .step-desc { font-size: .83rem; color: var(--muted); line-height: 1.6; }
+
+    /* visual metodologia */
+    .method-visual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .method-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 20px 16px;
+      transition: border-color .2s, transform .2s;
+    }
+    .method-card:hover { border-color: var(--red); transform: translateY(-3px); }
+    .method-card:first-child { grid-column: span 2; }
+    .mc-icon { font-size: 1.4rem; margin-bottom: 10px; }
+    .mc-label {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 4px;
+    }
+    .mc-title { font-size: .9rem; font-weight: 700; margin-bottom: 6px; }
+    .mc-text { font-size: .8rem; color: var(--muted); line-height: 1.55; }
+
+    /* ════════════════════
+       PLANOS
+    ════════════════════ */
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 48px;
+    }
+    .plan-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 28px 22px;
+      position: relative;
+      transition: border-color .2s, transform .2s;
+      display: flex;
+      flex-direction: column;
+    }
+    .plan-card:hover { border-color: rgba(232,34,42,.4); transform: translateY(-4px); }
+    .plan-card.featured {
+      border-color: var(--red);
+      background: linear-gradient(160deg, #1a0a0b, var(--card));
+    }
+    .plan-badge {
+      position: absolute;
+      top: -12px; left: 50%;
+      transform: translateX(-50%);
+      background: var(--red);
+      color: #fff;
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+    .plan-name {
+      font-family: var(--font-h);
+      font-size: 1.3rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .plan-period { font-size: .75rem; color: var(--muted); margin-bottom: 20px; }
+    .plan-price {
+      font-family: var(--font-h);
+      font-size: 2.8rem;
+      color: var(--red);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .plan-price sup { font-size: 1rem; vertical-align: top; margin-top: 6px; }
+    .plan-installment { font-size: .75rem; color: var(--muted); margin-bottom: 20px; }
+    .plan-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 24px;
+      flex: 1;
+    }
+    .plan-features li {
+      display: flex;
+      gap: 10px;
+      font-size: .83rem;
+      color: var(--light);
+      align-items: flex-start;
+    }
+    .plan-features li .chk { color: var(--red); flex-shrink: 0; font-size: .9rem; }
+    .plan-features li .x { color: var(--muted); flex-shrink: 0; }
+    .plan-cta {
+      display: block;
+      text-align: center;
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 13px;
+      border-radius: 2px;
+      border: 1.5px solid var(--border);
+      color: var(--muted);
+      transition: border-color .15s, color .15s, background .15s;
+    }
+    .plan-cta:hover { border-color: var(--red); color: var(--text); }
+    .plan-card.featured .plan-cta {
+      background: var(--red);
+      border-color: var(--red);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(232,34,42,.3);
+    }
+    .plan-card.featured .plan-cta:hover { background: var(--red2); }
+
+    /* ════════════════════
+       DEPOIMENTOS
+    ════════════════════ */
+    .test-section { background: var(--dark); }
+    .test-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 48px;
+    }
+    .test-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 22px 20px;
+    }
+    .test-stars { color: var(--red); font-size: .85rem; margin-bottom: 12px; }
+    .test-text {
+      font-size: .88rem;
+      color: var(--light);
+      line-height: 1.7;
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+    .test-result {
+      display: inline-block;
+      background: rgba(232,34,42,.1);
+      border: 1px solid rgba(232,34,42,.2);
+      color: var(--red);
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+      margin-bottom: 14px;
+    }
+    .test-author { display: flex; align-items: center; gap: 10px; }
+    .test-av {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, #3a0a0c, var(--red));
+      border-radius: 50%;
+      display: grid; place-items: center;
+      font-size: .8rem;
+      font-weight: 700;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .test-name { font-size: .83rem; font-weight: 700; }
+    .test-info { font-size: .72rem; color: var(--muted); }
+
+    /* ════════════════════
+       SOBRE
+    ════════════════════ */
+    .about-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .about-photo {
+      width: 300px;
+      aspect-ratio: 3/4;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .about-photo::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 40%;
+      background: linear-gradient(180deg, transparent, var(--card));
+    }
+    .about-photo-svg { opacity: .65; }
+    .about-credentials {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 24px;
+    }
+    .cred {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      font-size: .85rem;
+      color: var(--light);
+    }
+    .cred-icon {
+      width: 30px; height: 30px;
+      background: rgba(232,34,42,.1);
+      border-radius: 2px;
+      display: grid; place-items: center;
+      font-size: .85rem;
+      flex-shrink: 0;
+    }
+
+    /* ════════════════════
+       FAQ
+    ════════════════════ */
+    .faq-section { background: var(--dark); }
+    .faq-list { max-width: 620px; margin: 40px auto 0; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-q {
+      width: 100%; background: none; border: none;
+      color: var(--text); font-family: var(--font-b);
+      font-size: .92rem; font-weight: 600;
+      text-align: left; padding: 18px 0;
+      cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    }
+    .faq-arr { color: var(--red); font-size: 1.1rem; transition: transform .2s; flex-shrink: 0; }
+    .faq-item.open .faq-arr { transform: rotate(45deg); }
+    .faq-a {
+      font-size: .85rem; color: var(--muted); line-height: 1.7;
+      max-height: 0; overflow: hidden;
+      transition: max-height .3s ease, padding .3s;
+    }
+    .faq-item.open .faq-a { max-height: 200px; padding-bottom: 18px; }
+
+    /* ════════════════════
+       CTA FINAL
+    ════════════════════ */
+    .final {
+      text-align: center;
+      background:
+        radial-gradient(ellipse 60% 60% at 50% 100%, rgba(232,34,42,.1) 0%, transparent 70%),
+        var(--black);
+    }
+    .final-box {
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .final h2 {
+      font-family: var(--font-h);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      line-height: .95;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .final h2 .outline { -webkit-text-stroke: 1.5px var(--text); color: transparent; }
+    .final h2 .red { color: var(--red); }
+    .final p { font-size: .95rem; color: var(--light); margin-bottom: 36px; }
+
+    /* ════════════════════
+       FOOTER
+    ════════════════════ */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+      text-align: center;
+    }
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .footer-copy { font-size: .75rem; color: var(--muted); }
+    .footer-social {
+      display: flex; gap: 16px;
+    }
+    .social-btn {
+      width: 36px; height: 36px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      display: grid; place-items: center;
+      font-size: .9rem;
+      transition: border-color .15s;
+    }
+    .social-btn:hover { border-color: var(--red); }
+
+    /* ════════════════════
+       REVEAL
+    ════════════════════ */
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+    [data-reveal].visible { opacity: 1; transform: translateY(0); }
+
+    /* ════════════════════
+       MOBILE
+    ════════════════════ */
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      background: var(--dark);
+      border-top: 1px solid var(--border);
+      padding: 16px 24px 24px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-size: 1.1rem; font-weight: 700;
+      letter-spacing: .06em; text-transform: uppercase;
+      color: var(--light);
+      padding: 12px 0; border-bottom: 1px solid var(--border);
+    }
+    .mobile-nav a:last-child { border-bottom: none; }
+
+    @media (max-width: 900px) {
+      .nav-links, .nav-btn { display: none; }
+      .hamburger { display: flex; }
+      .hero { grid-template-columns: 1fr; padding: 88px 20px 48px; text-align: center; }
+      .hero-left { padding-right: 0; }
+      .hero-desc { margin: 0 auto 32px; }
+      .hero-actions { justify-content: center; }
+      .hero-stats { justify-content: center; }
+      .hero-right { margin-top: 48px; }
+      .hero-badge { right: 0; }
+      .method-grid { grid-template-columns: 1fr; gap: 40px; }
+      .plans-grid { grid-template-columns: 1fr; max-width: 360px; margin: 48px auto 0; }
+      .test-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-photo { width: 100%; max-width: 280px; margin: 0 auto; }
+    }
+    @media (max-width: 560px) {
+      .method-visual { grid-template-columns: 1fr; }
+      .method-card:first-child { grid-column: span 1; }
+      .result-pill { left: 0; bottom: -20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="container nav-inner">
+    <div class="logo">Rafael<span>.</span>Fit</div>
+    <ul class="nav-links">
+      <li><a href="#metodo">Método</a></li>
+      <li><a href="#planos">Planos</a></li>
+      <li><a href="#resultados">Resultados</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+    </ul>
+    <a href="#planos" class="nav-btn">Começar agora</a>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#metodo" onclick="toggleMenu()">Método</a>
+    <a href="#planos" onclick="toggleMenu()">Planos</a>
+    <a href="#resultados" onclick="toggleMenu()">Resultados</a>
+    <a href="#sobre" onclick="toggleMenu()">Sobre</a>
+    <a href="#planos" onclick="toggleMenu()" style="color:var(--red)">Começar agora →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container" style="display:contents">
+    <div class="hero-left container" style="display:block">
+      <div class="hero-tag" data-reveal>
+        <div class="hero-tag-line"></div>
+        Personal Trainer · São Paulo
+      </div>
+      <h1 data-reveal>
+        Seu corpo.<br>
+        <span class="outline">Seu</span><br>
+        <span class="red">Método.</span>
+      </h1>
+      <p class="hero-desc" data-reveal>
+        Treinos 100% personalizados, acompanhamento semanal e nutrição integrada.
+        Transformações reais sem fórmulas genéricas — só o que funciona para <em>você</em>.
+      </p>
+      <div class="hero-actions" data-reveal>
+        <a href="#planos" class="btn-primary">Quero minha transformação</a>
+        <a href="#resultados" class="btn-ghost">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+          Ver resultados
+        </a>
+      </div>
+      <div class="hero-stats" data-reveal>
+        <div><div class="stat-num">340+</div><div class="stat-label">Alunos ativos</div></div>
+        <div><div class="stat-num">8</div><div class="stat-label">Anos de experiência</div></div>
+        <div><div class="stat-num">97%</div><div class="stat-label">Taxa de retenção</div></div>
+      </div>
+    </div>
+
+    <div class="hero-right" style="padding: 0 24px;">
+      <div class="hero-visual" data-reveal>
+        <div class="hero-photo">
+          <div class="avatar-bg">
+            <svg viewBox="0 0 160 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- silhueta atlética -->
+              <ellipse cx="80" cy="40" rx="28" ry="32" fill="#1e1e2a" stroke="#2e2e3e" stroke-width="1"/>
+              <path d="M52 72 C40 90 35 120 38 160 L68 160 L72 120 L80 130 L88 120 L92 160 L122 160 C125 120 120 90 108 72 C100 68 92 65 80 65 C68 65 60 68 52 72Z" fill="#1e1e2a" stroke="#2e2e3e" stroke-width="1"/>
+              <path d="M38 90 C28 95 22 108 25 122 L40 118 L42 100Z" fill="#1a1a24" stroke="#2e2e3e" stroke-width="1"/>
+              <path d="M122 90 C132 95 138 108 135 122 L120 118 L118 100Z" fill="#1a1a24" stroke="#2e2e3e" stroke-width="1"/>
+              <path d="M68 160 L62 210 L72 210 L80 180 L88 210 L98 210 L92 160Z" fill="#1a1a24" stroke="#2e2e3e" stroke-width="1"/>
+              <!-- detalhes musculares -->
+              <path d="M64 80 C60 90 60 105 64 115" stroke="#e8222a" stroke-width=".8" opacity=".5"/>
+              <path d="M96 80 C100 90 100 105 96 115" stroke="#e8222a" stroke-width=".8" opacity=".5"/>
+              <line x1="70" y1="95" x2="90" y2="95" stroke="#e8222a" stroke-width=".6" opacity=".3"/>
+              <line x1="68" y1="108" x2="92" y2="108" stroke="#e8222a" stroke-width=".6" opacity=".3"/>
+            </svg>
+          </div>
+          <div class="photo-info">
+            <div class="photo-name">Rafael Souza</div>
+            <div class="photo-role">CREF 012345-G/SP · Personal Trainer</div>
+          </div>
+        </div>
+        <div class="hero-badge">Top Personal 2024</div>
+        <div class="result-pill">
+          <div class="pill-icon">🔥</div>
+          <div>
+            <div class="pill-num">-18kg</div>
+            <div class="pill-label">Resultado médio em 90 dias</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-track">
+    <div class="strip-item"><span class="dot"></span>Treino Personalizado</div>
+    <div class="strip-item"><span class="dot"></span>Consultoria Nutricional</div>
+    <div class="strip-item"><span class="dot"></span>Acompanhamento Semanal</div>
+    <div class="strip-item"><span class="dot"></span>App Exclusivo</div>
+    <div class="strip-item"><span class="dot"></span>Online ou Presencial</div>
+    <div class="strip-item"><span class="dot"></span>Treino Personalizado</div>
+    <div class="strip-item"><span class="dot"></span>Consultoria Nutricional</div>
+    <div class="strip-item"><span class="dot"></span>Acompanhamento Semanal</div>
+    <div class="strip-item"><span class="dot"></span>App Exclusivo</div>
+    <div class="strip-item"><span class="dot"></span>Online ou Presencial</div>
+    <div class="strip-item"><span class="dot"></span>Treino Personalizado</div>
+    <div class="strip-item"><span class="dot"></span>Consultoria Nutricional</div>
+    <div class="strip-item"><span class="dot"></span>Acompanhamento Semanal</div>
+    <div class="strip-item"><span class="dot"></span>App Exclusivo</div>
+    <div class="strip-item"><span class="dot"></span>Online ou Presencial</div>
+  </div>
+</div>
+
+<!-- METODOLOGIA -->
+<section class="method" id="metodo">
+  <div class="container">
+    <div class="method-grid">
+      <div data-reveal>
+        <div class="s-eyebrow">Como funciona</div>
+        <h2 class="s-title">O método<br><span class="outline">Rafael</span><br>Fit</h2>
+        <p class="s-sub">Sem treinos copiados da internet. Cada protocolo é criado do zero com base na sua biometria, rotina e objetivo.</p>
+        <div class="method-steps">
+          <div class="method-step">
+            <div class="step-n">01</div>
+            <div><div class="step-name">Anamnese completa</div><div class="step-desc">Levantamento detalhado do seu histórico, limitações, metas e estilo de vida antes de montar qualquer protocolo.</div></div>
+          </div>
+          <div class="method-step">
+            <div class="step-n">02</div>
+            <div><div class="step-name">Protocolo 100% personalizado</div><div class="step-desc">Treino e plano alimentar montados exclusivamente para você — revisados a cada 4 semanas conforme sua evolução.</div></div>
+          </div>
+          <div class="method-step">
+            <div class="step-n">03</div>
+            <div><div class="step-name">Acompanhamento ativo</div><div class="step-desc">Check-in semanal via app, ajustes em tempo real e contato direto pelo WhatsApp nos planos Premium.</div></div>
+          </div>
+          <div class="method-step">
+            <div class="step-n">04</div>
+            <div><div class="step-name">Resultados mensuráveis</div><div class="step-desc">Avaliação física a cada 30 dias com fotos comparativas, bioimpedância e análise de progresso detalhada.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="method-visual" data-reveal>
+        <div class="method-card">
+          <div class="mc-icon">📱</div>
+          <div class="mc-label">App exclusivo</div>
+          <div class="mc-title">Treino na palma da mão</div>
+          <div class="mc-text">App próprio com vídeos demonstrativos de cada exercício, cronômetro de descanso e registro de cargas.</div>
+        </div>
+        <div class="method-card">
+          <div class="mc-icon">🥗</div>
+          <div class="mc-label">Nutrição</div>
+          <div class="mc-title">Plano alimentar</div>
+          <div class="mc-text">Cardápio semanal flexível criado por nutricionista parceira com foco no seu objetivo.</div>
+        </div>
+        <div class="method-card">
+          <div class="mc-icon">📊</div>
+          <div class="mc-label">Evolução</div>
+          <div class="mc-title">Métricas em tempo real</div>
+          <div class="mc-text">Dashboard com gráficos de peso, % gordura, força e performance mês a mês.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANOS -->
+<section id="planos">
+  <div class="container">
+    <div style="text-align:center" data-reveal>
+      <div class="s-eyebrow">Invista em você</div>
+      <h2 class="s-title">Escolha seu <span class="outline">plano</span></h2>
+      <p class="s-sub" style="margin:0 auto">Sem taxa de adesão. Cancele quando quiser.</p>
+    </div>
+    <div class="plans-grid" data-reveal>
+
+      <!-- Starter -->
+      <div class="plan-card">
+        <div class="plan-name">Starter</div>
+        <div class="plan-period">Plano mensal</div>
+        <div class="plan-price"><sup>R$</sup>197</div>
+        <div class="plan-installment">por mês · cobrado mensalmente</div>
+        <ul class="plan-features">
+          <li><span class="chk">✓</span>Anamnese inicial completa</li>
+          <li><span class="chk">✓</span>Planilha de treino personalizada</li>
+          <li><span class="chk">✓</span>Revisão mensal do protocolo</li>
+          <li><span class="chk">✓</span>Acesso ao app de treinos</li>
+          <li><span class="x">✗</span><span style="color:var(--muted)">Plano alimentar</span></li>
+          <li><span class="x">✗</span><span style="color:var(--muted)">Check-in semanal</span></li>
+        </ul>
+        <a href="#" class="plan-cta">Escolher Starter</a>
+      </div>
+
+      <!-- Pro -->
+      <div class="plan-card featured">
+        <div class="plan-badge">Mais popular</div>
+        <div class="plan-name">Pro</div>
+        <div class="plan-period">Plano mensal</div>
+        <div class="plan-price"><sup>R$</sup>347</div>
+        <div class="plan-installment">por mês · cobrado mensalmente</div>
+        <ul class="plan-features">
+          <li><span class="chk">✓</span>Tudo do Starter</li>
+          <li><span class="chk">✓</span>Plano alimentar personalizado</li>
+          <li><span class="chk">✓</span>Check-in semanal via app</li>
+          <li><span class="chk">✓</span>Revisão quinzenal do protocolo</li>
+          <li><span class="chk">✓</span>Avaliação física mensal</li>
+          <li><span class="chk">✓</span>Suporte WhatsApp (seg–sex)</li>
+        </ul>
+        <a href="#" class="plan-cta">Escolher Pro</a>
+      </div>
+
+      <!-- Elite -->
+      <div class="plan-card">
+        <div class="plan-name">Elite</div>
+        <div class="plan-period">Plano mensal</div>
+        <div class="plan-price"><sup>R$</sup>597</div>
+        <div class="plan-installment">por mês · cobrado mensalmente</div>
+        <ul class="plan-features">
+          <li><span class="chk">✓</span>Tudo do Pro</li>
+          <li><span class="chk">✓</span>Suporte WhatsApp ilimitado</li>
+          <li><span class="chk">✓</span>Videoconferência semanal</li>
+          <li><span class="chk">✓</span>Revisão semanal do treino</li>
+          <li><span class="chk">✓</span>Acesso à comunidade VIP</li>
+          <li><span class="chk">✓</span>Prioridade no suporte</li>
+        </ul>
+        <a href="#" class="plan-cta">Escolher Elite</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="test-section" id="resultados">
+  <div class="container">
+    <div style="text-align:center" data-reveal>
+      <div class="s-eyebrow">Resultados reais</div>
+      <h2 class="s-title">Quem já <span class="outline">transformou</span></h2>
+    </div>
+    <div class="test-grid" data-reveal>
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <div class="test-result">−14kg em 3 meses</div>
+        <div class="test-text">"Tentei tudo antes do Rafael. Dieta maluca, academia sem orientação… só com a metodologia dele entendi o que realmente funciona pro meu corpo."</div>
+        <div class="test-author">
+          <div class="test-av">C</div>
+          <div><div class="test-name">Camila Rocha</div><div class="test-info">Plano Pro · São Paulo</div></div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <div class="test-result">+8kg massa em 5 meses</div>
+        <div class="test-text">"Nunca consegui ganhar massa. O acompanhamento semanal fez toda a diferença — cada semana tinha ajuste fino no treino e na dieta."</div>
+        <div class="test-author">
+          <div class="test-av">L</div>
+          <div><div class="test-name">Lucas Mendes</div><div class="test-info">Plano Elite · Online</div></div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <div class="test-result">−22kg em 6 meses</div>
+        <div class="test-text">"Fiz a cirurgia bariátrica e precisava de acompanhamento especializado. O Rafael entendeu minha situação e montou algo seguro e eficiente."</div>
+        <div class="test-author">
+          <div class="test-av">P</div>
+          <div><div class="test-name">Patricia Lima</div><div class="test-info">Plano Elite · BH</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="container">
+    <div class="about-grid" data-reveal>
+      <div class="about-photo">
+        <svg class="about-photo-svg" viewBox="0 0 200 280" fill="none" xmlns="http://www.w3.org/2000/svg" width="160">
+          <ellipse cx="100" cy="52" rx="34" ry="38" fill="#1e1e2a" stroke="#2e2e3e"/>
+          <path d="M66 90 C50 112 44 150 48 200 L84 200 L90 155 L100 168 L110 155 L116 200 L152 200 C156 150 150 112 134 90 C124 84 114 80 100 80 C86 80 76 84 66 90Z" fill="#1e1e2a" stroke="#2e2e3e"/>
+          <path d="M48 108 C34 115 26 132 30 150 L50 144 L53 120Z" fill="#1a1a24" stroke="#2e2e3e"/>
+          <path d="M152 108 C166 115 174 132 170 150 L150 144 L147 120Z" fill="#1a1a24" stroke="#2e2e3e"/>
+          <path d="M84 200 L76 268 L90 268 L100 234 L110 268 L124 268 L116 200Z" fill="#1a1a24" stroke="#2e2e3e"/>
+          <path d="M80 98 C74 115 74 138 80 150" stroke="#e8222a" stroke-width="1" opacity=".4"/>
+          <path d="M120 98 C126 115 126 138 120 150" stroke="#e8222a" stroke-width="1" opacity=".4"/>
+        </svg>
+      </div>
+      <div>
+        <div class="s-eyebrow">Quem vai te guiar</div>
+        <h2 class="s-title">Rafael<br><span class="outline">Souza</span></h2>
+        <p class="s-sub" style="margin-bottom:24px">Personal Trainer formado pela USP com especialização em Fisiologia do Exercício e Nutrição Esportiva. 8 anos transformando corpos e mentalidades — de forma personalizada e cientificamente embasada.</p>
+        <div class="about-credentials">
+          <div class="cred"><div class="cred-icon">🎓</div>Graduação em Ed. Física — USP (2016)</div>
+          <div class="cred"><div class="cred-icon">📜</div>CREF 012345-G/SP · Registro ativo</div>
+          <div class="cred"><div class="cred-icon">🏆</div>Top 10 Personal Trainer SP — 2022, 2023, 2024</div>
+          <div class="cred"><div class="cred-icon">🔬</div>Especialização em Fisiologia do Exercício — UNIFESP</div>
+          <div class="cred"><div class="cred-icon">🥗</div>Certificação em Nutrição Esportiva — FAPES</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <div style="text-align:center" data-reveal>
+      <div class="s-eyebrow">Dúvidas</div>
+      <h2 class="s-title">Perguntas <span class="outline">frequentes</span></h2>
+    </div>
+    <div class="faq-list" data-reveal>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">O acompanhamento é online ou presencial?<span class="faq-arr">+</span></button>
+        <div class="faq-a">Os planos Starter e Pro são 100% online, com treinos pelo app e comunicação via WhatsApp. O plano Elite inclui sessões de videoconferência semanais. Atendimento presencial em SP está disponível sob consulta.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Preciso ter experiência com academia?<span class="faq-arr">+</span></button>
+        <div class="faq-a">Não! O protocolo é montado com base no seu nível atual. Temos alunos iniciantes e atletas avançados — cada um com um programa diferente e específico para sua realidade.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Como funciona o cancelamento?<span class="faq-arr">+</span></button>
+        <div class="faq-a">Você pode cancelar a qualquer momento sem multa. Basta avisar com 7 dias de antecedência via WhatsApp e o cancelamento é processado imediatamente.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Consigo resultado treinando em casa?<span class="faq-arr">+</span></button>
+        <div class="faq-a">Sim! Montamos treinos adaptados para academia, home gym ou treino funcional sem equipamento. O que importa é consistência e protocolo correto, não o local.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Em quanto tempo verei resultados?<span class="faq-arr">+</span></button>
+        <div class="faq-a">Os primeiros resultados visíveis costumam aparecer entre 3 e 6 semanas, dependendo do seu objetivo e da consistência. A média dos alunos Pro em 90 dias é de 8 a 14 kg de perda de gordura.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="final">
+  <div class="container">
+    <div class="final-box" data-reveal>
+      <div class="s-eyebrow" style="text-align:center">Está esperando o quê?</div>
+      <h2>
+        Comece<br>
+        <span class="outline">hoje</span><br>
+        <span class="red">mesmo.</span>
+      </h2>
+      <p>Sem enrolação. Sem desculpa. A transformação começa com uma única decisão.</p>
+      <a href="#planos" class="btn-primary" style="display:inline-block;padding:16px 40px;font-size:.95rem">
+        Quero minha transformação →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container footer-inner">
+    <div class="logo" style="font-size:1.2rem">Rafael<span style="color:var(--red)">.</span>Fit</div>
+    <div class="footer-social">
+      <a href="#" class="social-btn" aria-label="Instagram">📷</a>
+      <a href="#" class="social-btn" aria-label="YouTube">▶️</a>
+      <a href="#" class="social-btn" aria-label="WhatsApp">💬</a>
+    </div>
+    <div class="footer-copy">© 2024 Rafael Souza Personal Trainer · CREF 012345-G/SP<br>Todos os direitos reservados</div>
+  </div>
+</footer>
+
+<script>
+function toggleMenu() {
+  document.getElementById('mobileNav').classList.toggle('open');
+}
+function toggleFaq(btn) {
+  btn.parentElement.classList.toggle('open');
+}
+const obs = new IntersectionObserver(
+  entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }),
+  { threshold: 0.1 }
+);
+document.querySelectorAll('[data-reveal]').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
