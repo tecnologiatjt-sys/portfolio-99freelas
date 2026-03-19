@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chá de Bebê da Sofia 🌸</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --blush:   #f2d5d5;
+      --rose:    #d4888a;
+      --rose2:   #c06a6c;
+      --sage:    #b5c4b1;
+      --sage2:   #8fa98b;
+      --cream:   #fdf6f0;
+      --warm:    #f9ede8;
+      --text:    #3d2c2c;
+      --muted:   #9c7e7e;
+      --border:  #ead5d5;
+      --white:   #ffffff;
+      --font-h:  'Cormorant Garamond', serif;
+      --font-b:  'Jost', sans-serif;
+      --radius:  16px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--cream);
+      color: var(--text);
+      font-family: var(--font-b);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* padrão floral fundo */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image:
+        radial-gradient(circle at 10% 15%, rgba(212,136,138,.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 85%, rgba(181,196,177,.1) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(242,213,213,.05) 0%, transparent 60%);
+      pointer-events: none; z-index: 0;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: 900px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; }
+
+    /* ══ HERO ══ */
+    .hero {
+      text-align: center;
+      padding: 60px 20px 48px;
+      position: relative; z-index: 1;
+    }
+    .hero-florals {
+      font-size: 2rem;
+      margin-bottom: 16px;
+      display: block;
+      animation: sway 4s ease-in-out infinite;
+    }
+    @keyframes sway {
+      0%,100% { transform: rotate(-2deg); }
+      50%      { transform: rotate(2deg); }
+    }
+    .hero-tag {
+      display: inline-block;
+      font-family: var(--font-b);
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--rose);
+      background: rgba(212,136,138,.1);
+      border: 1px solid var(--border);
+      padding: 5px 18px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-family: var(--font-h);
+      font-size: clamp(2.8rem, 9vw, 5rem);
+      font-weight: 600;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .hero h1 em { font-style: italic; color: var(--rose); }
+    .hero-sub {
+      font-family: var(--font-h);
+      font-style: italic;
+      font-size: clamp(1rem, 3vw, 1.3rem);
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    /* info cards */
+    .hero-info {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+    .info-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 8px 20px;
+      font-size: .82rem;
+      font-weight: 500;
+      color: var(--text);
+      box-shadow: 0 2px 8px rgba(212,136,138,.08);
+    }
+    .info-pill span { font-size: 1rem; }
+
+    .btn-scroll {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--rose);
+      color: #fff;
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 13px 28px;
+      border-radius: 999px;
+      box-shadow: 0 4px 20px rgba(212,136,138,.35);
+      transition: background .15s, transform .12s;
+    }
+    .btn-scroll:hover { background: var(--rose2); transform: translateY(-2px); }
+
+    /* divisor floral */
+    .divider-floral {
+      text-align: center;
+      font-size: 1.2rem;
+      color: var(--rose);
+      opacity: .5;
+      letter-spacing: .5em;
+      margin: 8px 0;
+      position: relative; z-index: 1;
+    }
+
+    /* ══ COUNTDOWN ══ */
+    .countdown-section {
+      position: relative; z-index: 1;
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 36px 20px;
+      text-align: center;
+    }
+    .countdown-label {
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .cd-item { text-align: center; }
+    .cd-num {
+      font-family: var(--font-h);
+      font-size: 3rem;
+      font-weight: 600;
+      color: var(--rose);
+      line-height: 1;
+      min-width: 64px;
+      display: block;
+    }
+    .cd-label {
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .cd-sep {
+      font-family: var(--font-h);
+      font-size: 2.5rem;
+      color: var(--border);
+      line-height: 1;
+      margin-top: 2px;
+    }
+
+    /* ══ MENSAGEM ══ */
+    .message-section {
+      position: relative; z-index: 1;
+      padding: 64px 20px;
+      text-align: center;
+    }
+    .section-eyebrow {
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: var(--font-h);
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 600;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .section-title em { font-style: italic; color: var(--rose); }
+    .message-text {
+      font-family: var(--font-h);
+      font-style: italic;
+      font-size: clamp(.95rem, 2.5vw, 1.15rem);
+      color: var(--muted);
+      max-width: 580px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* ══ LISTA DE PRESENTES ══ */
+    .gifts-section {
+      position: relative; z-index: 1;
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      padding: 64px 0;
+    }
+    .gifts-header { text-align: center; margin-bottom: 32px; padding: 0 20px; }
+
+    /* filtros */
+    .filters {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+      padding: 0 20px;
+    }
+    .filter-btn {
+      font-family: var(--font-b);
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 7px 18px;
+      border-radius: 999px;
+      border: 1.5px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all .15s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--rose);
+      border-color: var(--rose);
+      color: #fff;
+    }
+
+    /* grid de presentes */
+    .gifts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 14px;
+      padding: 0 20px;
+    }
+    .gift-card {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 16px;
+      text-align: center;
+      position: relative;
+      transition: transform .2s, box-shadow .2s, border-color .2s;
+    }
+    .gift-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(212,136,138,.12); border-color: var(--rose); }
+    .gift-card.taken { opacity: .55; pointer-events: none; }
+    .gift-card.taken::after {
+      content: '✓ Presenteado';
+      position: absolute;
+      inset: 0;
+      background: rgba(181,196,177,.25);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .75rem;
+      font-weight: 700;
+      color: var(--sage2);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      pointer-events: none;
+    }
+    .gift-emoji { font-size: 2rem; margin-bottom: 10px; display: block; }
+    .gift-name {
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+    .gift-price {
+      font-family: var(--font-h);
+      font-size: 1rem;
+      color: var(--rose);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .gift-qty {
+      font-size: .7rem;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .btn-gift {
+      display: block;
+      width: 100%;
+      background: var(--rose);
+      color: #fff;
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 9px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      transition: background .15s, transform .1s;
+    }
+    .btn-gift:hover { background: var(--rose2); transform: scale(.98); }
+
+    /* ══ CONFIRMAÇÃO ══ */
+    .rsvp-section {
+      position: relative; z-index: 1;
+      background: var(--warm);
+      border-top: 1px solid var(--border);
+      padding: 64px 20px;
+      text-align: center;
+    }
+    .rsvp-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      max-width: 480px;
+      margin: 32px auto 0;
+      box-shadow: 0 4px 24px rgba(212,136,138,.08);
+    }
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 14px;
+      text-align: left;
+    }
+    .form-field label {
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .form-field input,
+    .form-field select {
+      background: var(--cream);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-family: var(--font-b);
+      font-size: .9rem;
+      color: var(--text);
+      outline: none;
+      transition: border-color .15s;
+      -webkit-appearance: none;
+    }
+    .form-field input:focus,
+    .form-field select:focus { border-color: var(--rose); }
+    .form-field select option { background: var(--white); }
+    .btn-rsvp {
+      width: 100%;
+      background: var(--rose);
+      color: #fff;
+      font-family: var(--font-b);
+      font-size: .85rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 14px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      margin-top: 8px;
+      box-shadow: 0 4px 16px rgba(212,136,138,.3);
+      transition: background .15s, transform .12s;
+    }
+    .btn-rsvp:hover { background: var(--rose2); transform: translateY(-1px); }
+
+    /* ══ DETALHES DO EVENTO ══ */
+    .event-section {
+      position: relative; z-index: 1;
+      padding: 64px 20px;
+      text-align: center;
+    }
+    .event-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      max-width: 700px;
+      margin: 32px auto 0;
+    }
+    .event-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      box-shadow: 0 2px 12px rgba(212,136,138,.06);
+    }
+    .event-icon { font-size: 1.8rem; margin-bottom: 10px; }
+    .event-label {
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .event-value {
+      font-family: var(--font-h);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    /* ══ FOOTER ══ */
+    footer {
+      background: var(--text);
+      color: rgba(253,246,240,.5);
+      text-align: center;
+      padding: 28px 20px;
+      font-size: .78rem;
+      position: relative; z-index: 1;
+    }
+    footer strong { color: rgba(253,246,240,.85); }
+
+    /* ══ MODAL ══ */
+    .modal-overlay {
+      position: fixed; inset: 0;
+      background: rgba(61,44,44,.6);
+      backdrop-filter: blur(6px);
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .25s;
+    }
+    .modal-overlay.show { opacity: 1; pointer-events: all; }
+    .modal {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      transform: scale(.92);
+      transition: transform .25s;
+      position: relative;
+    }
+    .modal-overlay.show .modal { transform: scale(1); }
+    .modal-close {
+      position: absolute;
+      top: 14px; right: 18px;
+      background: none; border: none;
+      font-size: 1.2rem; cursor: pointer;
+      color: var(--muted);
+    }
+    .modal-emoji { font-size: 2.5rem; margin-bottom: 12px; }
+    .modal-title { font-family: var(--font-h); font-size: 1.5rem; font-weight: 600; margin-bottom: 8px; }
+    .modal-sub { font-size: .88rem; color: var(--muted); margin-bottom: 20px; }
+    .modal-pix {
+      background: var(--cream);
+      border: 1.5px dashed var(--border);
+      border-radius: 10px;
+      padding: 14px 18px;
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 16px;
+      word-break: break-all;
+      cursor: pointer;
+      transition: border-color .15s;
+    }
+    .modal-pix:hover { border-color: var(--rose); }
+    .modal-note { font-size: .75rem; color: var(--muted); }
+    .btn-copy {
+      display: block; width: 100%;
+      background: var(--rose); color: #fff;
+      font-size: .82rem; font-weight: 700;
+      letter-spacing: .06em; text-transform: uppercase;
+      padding: 12px; border-radius: 999px; border: none;
+      cursor: pointer; margin-bottom: 10px;
+      transition: background .15s;
+    }
+    .btn-copy:hover { background: var(--rose2); }
+
+    /* reveal */
+    [data-reveal] {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity .5s ease, transform .5s ease;
+    }
+    [data-reveal].visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 480px) {
+      .gifts-grid { grid-template-columns: repeat(2, 1fr); }
+      .cd-num { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <span class="hero-florals">🌸 🌷 🌸</span>
+  <div class="hero-tag">Você está convidada 💕</div>
+  <h1>Chá de Bebê da<br><em>Sofia</em></h1>
+  <p class="hero-sub">Uma tarde cheia de amor para celebrar nossa chegada</p>
+
+  <div class="hero-info">
+    <div class="info-pill"><span>📅</span> 14 de Junho de 2025</div>
+    <div class="info-pill"><span>🕑</span> 14h às 18h</div>
+    <div class="info-pill"><span>📍</span> Buffet Villa Rosa</div>
+  </div>
+
+  <a href="#presentes" class="btn-scroll">Ver lista de presentes 🎁</a>
+</section>
+
+<div class="divider-floral">✿ ✿ ✿</div>
+
+<!-- COUNTDOWN -->
+<div class="countdown-section">
+  <div class="countdown-label">Faltam para o grande dia</div>
+  <div class="countdown">
+    <div class="cd-item">
+      <span class="cd-num" id="cd-days">--</span>
+      <span class="cd-label">Dias</span>
+    </div>
+    <div class="cd-sep">:</div>
+    <div class="cd-item">
+      <span class="cd-num" id="cd-hours">--</span>
+      <span class="cd-label">Horas</span>
+    </div>
+    <div class="cd-sep">:</div>
+    <div class="cd-item">
+      <span class="cd-num" id="cd-mins">--</span>
+      <span class="cd-label">Min</span>
+    </div>
+    <div class="cd-sep">:</div>
+    <div class="cd-item">
+      <span class="cd-num" id="cd-secs">--</span>
+      <span class="cd-label">Seg</span>
+    </div>
+  </div>
+</div>
+
+<!-- MENSAGEM -->
+<section class="message-section" data-reveal>
+  <div class="container">
+    <div class="section-eyebrow">Das mamães</div>
+    <h2 class="section-title">Com amor e <em>gratidão</em></h2>
+    <p class="message-text">
+      Nossa Sofia está quase chegando e queremos celebrar esse momento
+      tão especial ao lado das pessoas que amamos. Cada presente escolhido
+      com carinho vai fazer parte da história dela — e ter vocês conosco
+      nesse dia já é o maior presente de todos. 💕
+    </p>
+    <p class="message-text" style="margin-top:16px; font-size:.9rem">
+      — <strong>Ana & Lucas</strong>
+    </p>
+  </div>
+</section>
+
+<div class="divider-floral">✿ ✿ ✿</div>
+
+<!-- LISTA DE PRESENTES -->
+<section class="gifts-section" id="presentes">
+  <div class="gifts-header" data-reveal>
+    <div class="section-eyebrow">Lista de presentes</div>
+    <h2 class="section-title">Escolha um <em>presentinho</em></h2>
+    <p style="font-size:.88rem; color:var(--muted); margin-top:8px">Clique no presente para ver como contribuir 🎀</p>
+  </div>
+
+  <div class="filters" data-reveal>
+    <button class="filter-btn active" onclick="filterGifts('all', this)">Todos</button>
+    <button class="filter-btn" onclick="filterGifts('higiene', this)">🛁 Higiene</button>
+    <button class="filter-btn" onclick="filterGifts('roupas', this)">👗 Roupas</button>
+    <button class="filter-btn" onclick="filterGifts('quarto', this)">🛏️ Quarto</button>
+    <button class="filter-btn" onclick="filterGifts('alimentacao', this)">🍼 Alimentação</button>
+    <button class="filter-btn" onclick="filterGifts('brinquedos', this)">🧸 Brinquedos</button>
+  </div>
+
+  <div class="gifts-grid" id="giftsGrid" data-reveal>
+    <!-- gerado por JS -->
+  </div>
+</section>
+
+<div class="divider-floral" style="background:var(--white); padding:8px 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border)">✿ ✿ ✿</div>
+
+<!-- EVENTO -->
+<section class="event-section" data-reveal>
+  <div class="container">
+    <div class="section-eyebrow">Informações</div>
+    <h2 class="section-title">Detalhes do <em>evento</em></h2>
+    <div class="event-grid">
+      <div class="event-card">
+        <div class="event-icon">📅</div>
+        <div class="event-label">Data</div>
+        <div class="event-value">14 de Junho<br>de 2025</div>
+      </div>
+      <div class="event-card">
+        <div class="event-icon">🕑</div>
+        <div class="event-label">Horário</div>
+        <div class="event-value">14h00 às 18h00<br><span style="font-size:.85rem;color:var(--muted)">Não se atrase 😄</span></div>
+      </div>
+      <div class="event-card">
+        <div class="event-icon">📍</div>
+        <div class="event-label">Local</div>
+        <div class="event-value">Buffet Villa Rosa<br><span style="font-size:.85rem;color:var(--muted)">R. das Flores, 245 — SP</span></div>
+      </div>
+      <div class="event-card">
+        <div class="event-icon">👗</div>
+        <div class="event-label">Dress code</div>
+        <div class="event-value">Rosa & Nude<br><span style="font-size:.85rem;color:var(--muted)">Tons pastel ✨</span></div>
+      </div>
+    </div>
+    <div style="margin-top:24px">
+      <a href="https://maps.google.com" target="_blank" class="btn-scroll" style="display:inline-flex">
+        📍 Ver no mapa
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONFIRMAÇÃO -->
+<section class="rsvp-section" data-reveal>
+  <div class="container">
+    <div class="section-eyebrow">Confirmação</div>
+    <h2 class="section-title">Confirme sua <em>presença</em></h2>
+    <p style="font-size:.88rem;color:var(--muted)">Confirme até 07 de Junho para organizarmos tudo com carinho 💕</p>
+    <div class="rsvp-card">
+      <div class="form-field">
+        <label>Seu nome</label>
+        <input type="text" placeholder="Maria Silva"/>
+      </div>
+      <div class="form-field">
+        <label>WhatsApp</label>
+        <input type="tel" placeholder="(11) 9 0000-0000"/>
+      </div>
+      <div class="form-field">
+        <label>Você vai comparecer?</label>
+        <select>
+          <option>Sim, estarei lá! 🎉</option>
+          <option>Sim, com acompanhante</option>
+          <option>Não consigo ir 😢</option>
+        </select>
+      </div>
+      <button class="btn-rsvp" onclick="confirmRSVP()">Confirmar Presença 💕</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  Feito com muito amor para a chegada da nossa <strong>Sofia</strong> 🌸<br>
+  <span style="font-size:.7rem;margin-top:4px;display:block">© 2025 · Ana & Lucas</span>
+</footer>
+
+<!-- MODAL PRESENTE -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModalBtn()">✕</button>
+    <div class="modal-emoji" id="modalEmoji">🎁</div>
+    <div class="modal-title" id="modalTitle">Presente</div>
+    <div class="modal-sub" id="modalSub">Valor sugerido</div>
+    <div class="modal-pix" id="modalPix" onclick="copyPix()">00020126360014BR.GOV.BCB.PIX...</div>
+    <button class="btn-copy" onclick="copyPix()">📋 Copiar chave Pix</button>
+    <div class="modal-note">Após o pagamento, envie o comprovante para o WhatsApp da mamãe 💕</div>
+  </div>
+</div>
+
+<script>
+/* ─── DADOS DOS PRESENTES ─── */
+const gifts = [
+  { id:1,  name:'Kit Banho Bebê', emoji:'🛁', price:'R$ 89',  cat:'higiene',     qty:2,  taken:false },
+  { id:2,  name:'Fraldas RN (pct)', emoji:'🍼', price:'R$ 45', cat:'alimentacao', qty:10, taken:false },
+  { id:3,  name:'Body Manga Curta (P)', emoji:'👗', price:'R$ 35', cat:'roupas', qty:5, taken:false },
+  { id:4,  name:'Macacão Rosa (M)', emoji:'🌸', price:'R$ 55', cat:'roupas', qty:3, taken:true },
+  { id:5,  name:'Pomada Bepantol', emoji:'💊', price:'R$ 28', cat:'higiene', qty:5, taken:false },
+  { id:6,  name:'Shampoo Johnson\'s', emoji:'🧴', price:'R$ 32', cat:'higiene', qty:4, taken:false },
+  { id:7,  name:'Ursinho de Pelúcia', emoji:'🧸', price:'R$ 75', cat:'brinquedos', qty:2, taken:false },
+  { id:8,  name:'Chocalho Colorido', emoji:'🎶', price:'R$ 42', cat:'brinquedos', qty:3, taken:false },
+  { id:9,  name:'Lençol Berço (2 un)', emoji:'🛏️', price:'R$ 120', cat:'quarto', qty:2, taken:false },
+  { id:10, name:'Colchão Berço', emoji:'😴', price:'R$ 280', cat:'quarto', qty:1, taken:true },
+  { id:11, name:'Mobile Musical', emoji:'🎵', price:'R$ 145', cat:'quarto', qty:1, taken:false },
+  { id:12, name:'Mamadeira Anti-Cólica', emoji:'🍼', price:'R$ 65', cat:'alimentacao', qty:3, taken:false },
+  { id:13, name:'Chuquinha Silicone (3un)', emoji:'😶', price:'R$ 38', cat:'alimentacao', qty:5, taken:false },
+  { id:14, name:'Kit Manicure Bebê', emoji:'✂️', price:'R$ 52', cat:'higiene', qty:2, taken:false },
+  { id:15, name:'Termômetro Digital', emoji:'🌡️', price:'R$ 48', cat:'higiene', qty:1, taken:false },
+  { id:16, name:'Toalha Fralda (3un)', emoji:'🏖️', price:'R$ 58', cat:'higiene', qty:3, taken:false },
+  { id:17, name:'Sapatinho Rosa (P)', emoji:'👟', price:'R$ 35', cat:'roupas', qty:4, taken:false },
+  { id:18, name:'Tiara Laço Floral', emoji:'🎀', price:'R$ 25', cat:'roupas', qty:5, taken:false },
+  { id:19, name:'Manta de Tricot', emoji:'🧣', price:'R$ 98', cat:'quarto', qty:2, taken:false },
+  { id:20, name:'Aspirador Nasal', emoji:'👃', price:'R$ 42', cat:'higiene', qty:2, taken:false },
+  { id:21, name:'Porta Fraldas', emoji:'📦', price:'R$ 88', cat:'quarto', qty:1, taken:false },
+  { id:22, name:'Bebê Conforto', emoji:'🚗', price:'R$ 450', cat:'quarto', qty:1, taken:true },
+  { id:23, name:'Livro de Pano (kit)', emoji:'📚', price:'R$ 68', cat:'brinquedos', qty:2, taken:false },
+  { id:24, name:'Tapete de Atividades', emoji:'🌈', price:'R$ 135', cat:'brinquedos', qty:1, taken:false },
+  { id:25, name:'Kit Cuidados Nariz', emoji:'💨', price:'R$ 38', cat:'higiene', qty:3, taken:false },
+  { id:26, name:'Cobertor Fleece Rosa', emoji:'🌸', price:'R$ 72', cat:'quarto', qty:2, taken:false },
+  { id:27, name:'Camisetinha (kit 3un)', emoji:'👕', price:'R$ 65', cat:'roupas', qty:4, taken:false },
+  { id:28, name:'Banheira Dobrável', emoji:'🛁', price:'R$ 185', cat:'higiene', qty:1, taken:false },
+];
+
+let currentFilter = 'all';
+
+function renderGifts(filter) {
+  const grid = document.getElementById('giftsGrid');
+  const filtered = filter === 'all' ? gifts : gifts.filter(g => g.cat === filter);
+  grid.innerHTML = filtered.map(g => `
+    <div class="gift-card ${g.taken ? 'taken' : ''}" data-cat="${g.cat}">
+      <span class="gift-emoji">${g.emoji}</span>
+      <div class="gift-name">${g.name}</div>
+      <div class="gift-price">${g.price}</div>
+      <div class="gift-qty">Qtd desejada: ${g.qty}</div>
+      ${!g.taken ? `<button class="btn-gift" onclick="openModal(${g.id})">🎁 Presentear</button>` : ''}
+    </div>
+  `).join('');
+}
+
+function filterGifts(cat, btn) {
+  currentFilter = cat;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderGifts(cat);
+}
+
+function openModal(id) {
+  const g = gifts.find(x => x.id === id);
+  document.getElementById('modalEmoji').textContent = g.emoji;
+  document.getElementById('modalTitle').textContent = g.name;
+  document.getElementById('modalSub').textContent = `Valor sugerido: ${g.price}`;
+  document.getElementById('modalPix').textContent = '00020126360014BR.GOV.BCB.PIX0114+5511999999999';
+  document.getElementById('modalOverlay').classList.add('show');
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModalBtn();
+}
+function closeModalBtn() {
+  document.getElementById('modalOverlay').classList.remove('show');
+}
+
+function copyPix() {
+  navigator.clipboard.writeText('+5511999999999').then(() => {
+    const btn = document.querySelector('.btn-copy');
+    btn.textContent = '✓ Copiado!';
+    btn.style.background = '#8fa98b';
+    setTimeout(() => { btn.textContent = '📋 Copiar chave Pix'; btn.style.background = ''; }, 2000);
+  });
+}
+
+function confirmRSVP() {
+  alert('Presença confirmada! Mal podemos esperar para te ver lá 💕');
+}
+
+/* countdown */
+function updateCountdown() {
+  const target = new Date('2025-06-14T14:00:00');
+  const now = new Date();
+  const diff = target - now;
+  if (diff <= 0) { document.querySelector('.countdown-section').innerHTML = '<p style="color:var(--rose);font-family:var(--font-h);font-size:1.5rem;font-style:italic">O grande dia chegou! 🌸</p>'; return; }
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  document.getElementById('cd-days').textContent = String(d).padStart(2,'0');
+  document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-mins').textContent = String(m).padStart(2,'0');
+  document.getElementById('cd-secs').textContent = String(s).padStart(2,'0');
+}
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+/* reveal */
+const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);} }), { threshold: 0.08 });
+document.querySelectorAll('[data-reveal]').forEach(el => obs.observe(el));
+
+renderGifts('all');
+</script>
+</body>
+</html>
