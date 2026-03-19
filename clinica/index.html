@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Clínica Lumière — Estética Avançada</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --rose:    #c9826b;
+      --rose2:   #e8a898;
+      --cream:   #fdf8f5;
+      --warm:    #f5ede7;
+      --text:    #2d2420;
+      --muted:   #9c8880;
+      --border:  #ecddd7;
+      --green:   #25d366;
+      --green2:  #1da851;
+      --white:   #ffffff;
+      --font-h:  'Playfair Display', serif;
+      --font-b:  'Nunito', sans-serif;
+      --radius:  16px;
+      --shadow:  0 4px 32px rgba(180,120,100,.12);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--cream);
+      color: var(--text);
+      font-family: var(--font-b);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── PADRÃO FLORAL SUTIL ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image:
+        radial-gradient(circle at 15% 20%, rgba(201,130,107,.07) 0%, transparent 50%),
+        radial-gradient(circle at 85% 80%, rgba(232,168,152,.08) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ════════════════════════
+       HEADER / LOGO
+    ════════════════════════ */
+    header {
+      position: sticky; top: 0;
+      background: rgba(253,248,245,.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-family: var(--font-h);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--rose);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo-dot {
+      width: 8px; height: 8px;
+      background: var(--rose);
+      border-radius: 50%;
+      margin-bottom: 2px;
+    }
+    .header-cta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green);
+      color: #fff;
+      font-family: var(--font-b);
+      font-size: .82rem;
+      font-weight: 700;
+      padding: 9px 18px;
+      border-radius: 999px;
+      box-shadow: 0 2px 12px rgba(37,211,102,.3);
+      transition: background .15s, transform .12s;
+      white-space: nowrap;
+    }
+    .header-cta:hover { background: var(--green2); transform: translateY(-1px); }
+    .header-cta svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+    /* ════════════════════════
+       HERO
+    ════════════════════════ */
+    .hero {
+      position: relative;
+      z-index: 1;
+      padding: 60px 24px 50px;
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--warm);
+      border: 1px solid var(--border);
+      color: var(--rose);
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+    }
+    .badge-dot { width: 6px; height: 6px; background: var(--rose); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: .5; transform: scale(.8); }
+    }
+
+    .hero h1 {
+      font-family: var(--font-h);
+      font-size: clamp(2rem, 7vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--rose);
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 480px;
+      margin: 0 auto 32px;
+      line-height: 1.75;
+    }
+
+    /* botão WhatsApp principal */
+    .btn-wa {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: var(--green);
+      color: #fff;
+      font-family: var(--font-b);
+      font-size: 1.05rem;
+      font-weight: 700;
+      padding: 16px 36px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 6px 28px rgba(37,211,102,.35);
+      transition: background .15s, transform .15s, box-shadow .15s;
+      text-decoration: none;
+    }
+    .btn-wa:hover {
+      background: var(--green2);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 36px rgba(37,211,102,.45);
+    }
+    .btn-wa svg { width: 22px; height: 22px; flex-shrink: 0; }
+
+    .hero-note {
+      margin-top: 12px;
+      font-size: .78rem;
+      color: var(--muted);
+    }
+
+    /* foto mockup */
+    .hero-visual {
+      position: relative;
+      max-width: 420px;
+      margin: 44px auto 0;
+    }
+    .hero-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      text-align: left;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--rose), var(--rose2));
+    }
+    .card-tag {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 10px;
+    }
+    .card-title {
+      font-family: var(--font-h);
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .card-sub { font-size: .85rem; color: var(--muted); margin-bottom: 18px; }
+    .card-spots {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff8f0;
+      border: 1px solid #fad9c8;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: #b05a30;
+    }
+    .card-spots span { font-size: 1rem; }
+
+    /* floating pill */
+    .float-pill {
+      position: absolute;
+      right: -8px; top: 20px;
+      background: var(--rose);
+      color: #fff;
+      font-size: .7rem;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 999px 0 0 999px;
+      box-shadow: 0 2px 12px rgba(201,130,107,.4);
+    }
+
+    /* ════════════════════════
+       SERVIÇOS
+    ════════════════════════ */
+    .services {
+      position: relative; z-index: 1;
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 60px 24px;
+    }
+    .section-center { text-align: center; margin-bottom: 40px; }
+    .section-eyebrow {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-family: var(--font-h);
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 800;
+      line-height: 1.2;
+    }
+    .section-title em { font-style: italic; color: var(--rose); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .service-card {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      text-align: center;
+      transition: transform .2s, box-shadow .2s, border-color .2s;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+      border-color: var(--rose2);
+    }
+    .service-emoji { font-size: 2rem; margin-bottom: 10px; }
+    .service-name {
+      font-family: var(--font-h);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .service-desc { font-size: .83rem; color: var(--muted); line-height: 1.6; }
+
+    /* ════════════════════════
+       COMO FUNCIONA
+    ════════════════════════ */
+    .how {
+      position: relative; z-index: 1;
+      padding: 64px 24px;
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 40px;
+      text-align: left;
+    }
+    .step {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      position: relative;
+      padding-bottom: 32px;
+    }
+    .step:last-child { padding-bottom: 0; }
+    .step::before {
+      content: '';
+      position: absolute;
+      left: 19px; top: 44px;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+    .step:last-child::before { display: none; }
+    .step-num {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--rose);
+      color: #fff;
+      font-family: var(--font-h);
+      font-size: 1rem;
+      font-weight: 700;
+      display: grid; place-items: center;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .step-body {}
+    .step-title {
+      font-family: var(--font-b);
+      font-size: .95rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+      margin-top: 8px;
+    }
+    .step-text { font-size: .85rem; color: var(--muted); line-height: 1.65; }
+
+    /* ════════════════════════
+       DEPOIMENTOS / CONFIANÇA
+    ════════════════════════ */
+    .trust {
+      position: relative; z-index: 1;
+      background: var(--warm);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 64px 24px;
+    }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      max-width: 860px;
+      margin: 40px auto 0;
+    }
+    .review-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 20px;
+      box-shadow: 0 2px 12px rgba(180,120,100,.06);
+    }
+    .stars { color: #f5a623; font-size: 1rem; margin-bottom: 10px; }
+    .review-text { font-size: .88rem; color: var(--text); line-height: 1.65; margin-bottom: 14px; font-style: italic; }
+    .reviewer {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .reviewer-avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--rose), var(--rose2));
+      display: grid; place-items: center;
+      font-size: .85rem;
+      color: #fff;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .reviewer-name { font-size: .82rem; font-weight: 700; }
+    .reviewer-label { font-size: .73rem; color: var(--muted); }
+
+    /* badges de confiança */
+    .trust-badges {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 44px;
+    }
+    .trust-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 8px 18px;
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+    .trust-badge span { font-size: 1rem; }
+
+    /* ════════════════════════
+       CTA FINAL
+    ════════════════════════ */
+    .cta-final {
+      position: relative; z-index: 1;
+      padding: 70px 24px;
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .cta-final h2 {
+      font-family: var(--font-h);
+      font-size: clamp(1.8rem, 5vw, 2.6rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+    .cta-final h2 em { font-style: italic; color: var(--rose); }
+    .cta-final p { font-size: .95rem; color: var(--muted); margin-bottom: 32px; }
+
+    .cta-urgency {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff8f0;
+      border: 1px solid #fad9c8;
+      color: #b05a30;
+      font-size: .8rem;
+      font-weight: 700;
+      padding: 7px 18px;
+      border-radius: 999px;
+      margin-bottom: 24px;
+    }
+
+    /* ════════════════════════
+       FOOTER
+    ════════════════════════ */
+    footer {
+      background: var(--text);
+      color: rgba(255,255,255,.6);
+      text-align: center;
+      padding: 28px 24px;
+      font-size: .8rem;
+      position: relative; z-index: 1;
+    }
+    footer strong { color: rgba(255,255,255,.9); }
+
+    /* ════════════════════════
+       BOTÃO FLUTUANTE WA
+    ════════════════════════ */
+    .wa-float {
+      position: fixed;
+      bottom: 24px; right: 24px;
+      z-index: 200;
+      width: 60px; height: 60px;
+      background: var(--green);
+      border-radius: 50%;
+      display: grid; place-items: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,.45);
+      transition: transform .15s, box-shadow .15s;
+      animation: float-in .4s .5s both;
+    }
+    .wa-float:hover { transform: scale(1.08); box-shadow: 0 8px 28px rgba(37,211,102,.55); }
+    .wa-float svg { width: 30px; height: 30px; }
+    @keyframes float-in {
+      from { opacity: 0; transform: scale(.7); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    /* tooltip */
+    .wa-float::before {
+      content: 'Agendar agora';
+      position: absolute;
+      right: 70px;
+      background: var(--text);
+      color: #fff;
+      font-family: var(--font-b);
+      font-size: .75rem;
+      font-weight: 700;
+      white-space: nowrap;
+      padding: 6px 12px;
+      border-radius: 8px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .15s;
+    }
+    .wa-float:hover::before { opacity: 1; }
+
+    /* ════════════════════════
+       ANIMAÇÕES DE ENTRADA
+    ════════════════════════ */
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+    [data-reveal].visible { opacity: 1; transform: translateY(0); }
+
+    /* ════════════════════════
+       RESPONSIVO
+    ════════════════════════ */
+    @media (max-width: 480px) {
+      .hero { padding: 40px 20px 36px; }
+      .btn-wa { width: 100%; font-size: .97rem; }
+      .header-cta { font-size: .75rem; padding: 8px 14px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<header>
+  <div class="logo">
+    <div class="logo-dot"></div>
+    Lumière Estética
+  </div>
+  <a href="https://wa.me/5511999999999?text=Olá!%20Gostaria%20de%20agendar%20uma%20avaliação." class="header-cta" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.555 4.126 1.524 5.862L0 24l6.294-1.495A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.844 9.844 0 01-5.031-1.378l-.36-.214-3.733.887.928-3.62-.235-.374A9.847 9.847 0 012.118 12C2.118 6.533 6.533 2.118 12 2.118S21.882 6.533 21.882 12 17.467 21.882 12 21.882z"/></svg>
+    Agendar pelo WhatsApp
+  </a>
+</header>
+
+<!-- ══ HERO ══ -->
+<section class="hero" data-reveal>
+  <div class="badge"><div class="badge-dot"></div>Clínica de Estética em São Paulo</div>
+  <h1>Realce sua beleza com <em>tratamentos que transformam</em></h1>
+  <p class="hero-sub">
+    Na Lumière, cada procedimento é personalizado para você.
+    Agende sua avaliação gratuita e descubra o tratamento ideal.
+  </p>
+  <a href="https://wa.me/5511999999999?text=Olá!%20Gostaria%20de%20agendar%20minha%20avaliação%20gratuita." class="btn-wa" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.555 4.126 1.524 5.862L0 24l6.294-1.495A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.844 9.844 0 01-5.031-1.378l-.36-.214-3.733.887.928-3.62-.235-.374A9.847 9.847 0 012.118 12C2.118 6.533 6.533 2.118 12 2.118S21.882 6.533 21.882 12 17.467 21.882 12 21.882z"/></svg>
+    Agendar Avaliação Gratuita
+  </a>
+  <p class="hero-note">💬 Respondemos em até 5 minutos · Sem compromisso</p>
+
+  <div class="hero-visual">
+    <div class="hero-card">
+      <div class="float-pill">⭐ 4.9 / 5</div>
+      <div class="card-tag">✨ Oferta da Semana</div>
+      <div class="card-title">Avaliação Estética Gratuita</div>
+      <div class="card-sub">Consulta completa com especialista — sem custo</div>
+      <div class="card-spots">
+        <span>🔥</span>
+        Apenas <strong>8 vagas disponíveis</strong> esta semana
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SERVIÇOS ══ -->
+<section class="services">
+  <div class="section-center" data-reveal>
+    <div class="section-eyebrow">Nossos Tratamentos</div>
+    <h2 class="section-title">Procedimentos que <em>você vai amar</em></h2>
+  </div>
+  <div class="services-grid" data-reveal>
+    <div class="service-card">
+      <div class="service-emoji">✨</div>
+      <div class="service-name">Limpeza de Pele</div>
+      <div class="service-desc">Remoção de cravos, hidratação profunda e renovação celular para uma pele radiante.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-emoji">💉</div>
+      <div class="service-name">Harmonização Facial</div>
+      <div class="service-desc">Preenchimento e bioestimuladores para resultados naturais e duradouros.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-emoji">🌿</div>
+      <div class="service-name">Drenagem Linfática</div>
+      <div class="service-desc">Reduz inchaço, melhora a circulação e dá leveza ao corpo em poucos dias.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-emoji">⚡</div>
+      <div class="service-name">Radiofrequência</div>
+      <div class="service-desc">Estimula o colágeno, firma a pele e combate a flacidez sem cirurgia.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-emoji">🔬</div>
+      <div class="service-name">Peeling Químico</div>
+      <div class="service-desc">Remove manchas, uniformiza o tom e rejuvenesce com segurança clínica.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-emoji">🌙</div>
+      <div class="service-name">Microagulhamento</div>
+      <div class="service-desc">Estimula a produção natural de colágeno e melhora cicatrizes de acne.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ COMO FUNCIONA ══ -->
+<section class="how">
+  <div class="section-center" data-reveal>
+    <div class="section-eyebrow">É muito simples</div>
+    <h2 class="section-title">Como <em>agendar</em></h2>
+  </div>
+  <div class="steps" data-reveal>
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <div class="step-title">Clique no botão do WhatsApp</div>
+        <div class="step-text">Você será direcionado diretamente para o nosso WhatsApp com uma mensagem pronta. É só enviar!</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <div class="step-title">Escolha o melhor horário</div>
+        <div class="step-text">Nossa equipe responde em até 5 minutos e apresenta os horários disponíveis para você escolher.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <div class="step-title">Venha para sua avaliação</div>
+        <div class="step-text">Consulta completa e gratuita com nossa especialista. Sem pressão, sem compromisso.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center; margin-top: 40px;" data-reveal>
+    <a href="https://wa.me/5511999999999?text=Olá!%20Vi%20o%20site%20e%20quero%20agendar%20minha%20avaliação." class="btn-wa" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.555 4.126 1.524 5.862L0 24l6.294-1.495A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.844 9.844 0 01-5.031-1.378l-.36-.214-3.733.887.928-3.62-.235-.374A9.847 9.847 0 012.118 12C2.118 6.533 6.533 2.118 12 2.118S21.882 6.533 21.882 12 17.467 21.882 12 21.882z"/></svg>
+      Quero Agendar Agora
+    </a>
+  </div>
+</section>
+
+<!-- ══ DEPOIMENTOS ══ -->
+<section class="trust">
+  <div class="section-center" data-reveal>
+    <div class="section-eyebrow">Quem já veio, voltou</div>
+    <h2 class="section-title">O que nossas <em>clientes dizem</em></h2>
+  </div>
+  <div class="reviews-grid" data-reveal>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <div class="review-text">"Fiz a harmonização facial e fiquei apaixonada! Resultado super natural, a Dra. explicou tudo com calma. Me sinto 10 anos mais nova."</div>
+      <div class="reviewer">
+        <div class="reviewer-avatar">A</div>
+        <div>
+          <div class="reviewer-name">Ana Paula M.</div>
+          <div class="reviewer-label">Harmonização Facial</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <div class="review-text">"A limpeza de pele foi incrível! Minha pele ficou lisinha e brilhante. Atendimento super atencioso e o ambiente é muito agradável."</div>
+      <div class="reviewer">
+        <div class="reviewer-avatar">C</div>
+        <div>
+          <div class="reviewer-name">Carla S.</div>
+          <div class="reviewer-label">Limpeza de Pele</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <div class="review-text">"Já fiz 5 sessões de radiofrequência e a diferença é visível! A flacidez diminuiu muito. Super recomendo para quem busca resultado real."</div>
+      <div class="reviewer">
+        <div class="reviewer-avatar">F</div>
+        <div>
+          <div class="reviewer-name">Fernanda K.</div>
+          <div class="reviewer-label">Radiofrequência</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="trust-badges" data-reveal>
+    <div class="trust-badge"><span>🏆</span> +500 clientes atendidas</div>
+    <div class="trust-badge"><span>⭐</span> 4.9 de avaliação média</div>
+    <div class="trust-badge"><span>📋</span> Profissionais certificadas</div>
+    <div class="trust-badge"><span>🔒</span> Produtos regulamentados</div>
+  </div>
+</section>
+
+<!-- ══ CTA FINAL ══ -->
+<section class="cta-final" data-reveal>
+  <div class="cta-urgency">🔥 Apenas 8 vagas esta semana</div>
+  <h2>Pronta para se <em>sentir linda</em>?</h2>
+  <p>Agende agora sua avaliação gratuita e dê o primeiro passo para uma versão mais confiante de você.</p>
+  <a href="https://wa.me/5511999999999?text=Olá!%20Quero%20agendar%20minha%20avaliação%20gratuita%20na%20Lumière!" class="btn-wa" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor" style="width:22px;height:22px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.555 4.126 1.524 5.862L0 24l6.294-1.495A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.844 9.844 0 01-5.031-1.378l-.36-.214-3.733.887.928-3.62-.235-.374A9.847 9.847 0 012.118 12C2.118 6.533 6.533 2.118 12 2.118S21.882 6.533 21.882 12 17.467 21.882 12 21.882z"/></svg>
+    Agendar pelo WhatsApp Agora
+  </a>
+  <p class="hero-note" style="margin-top:12px">📍 Rua das Flores, 142 — Jardins, São Paulo · (11) 9 9999-9999</p>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  © 2024 <strong>Lumière Estética</strong> · Todos os direitos reservados<br>
+  <span style="font-size:.72rem; margin-top:4px; display:block">CNPJ 00.000.000/0001-00 · CRM/SP 12345</span>
+</footer>
+
+<!-- ══ BOTÃO FLUTUANTE ══ -->
+<a class="wa-float" href="https://wa.me/5511999999999?text=Olá!%20Vim%20pelo%20site%20e%20quero%20agendar." target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.555 4.126 1.524 5.862L0 24l6.294-1.495A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.844 9.844 0 01-5.031-1.378l-.36-.214-3.733.887.928-3.62-.235-.374A9.847 9.847 0 012.118 12C2.118 6.533 6.533 2.118 12 2.118S21.882 6.533 21.882 12 17.467 21.882 12 21.882z"/></svg>
+</a>
+
+<script>
+const reveals = document.querySelectorAll('[data-reveal]');
+const obs = new IntersectionObserver(
+  entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }),
+  { threshold: 0.1 }
+);
+reveals.forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>
