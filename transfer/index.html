@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Janilson Seabra | Transfer Premium · Newark · Nova York</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#07192A;--navy2:#0D2340;--navy3:#16375E;
+  --gold:#C8911E;--gold2:#E0A830;--gold3:#F3E1B4;
+  --white:#F7F7F5;--off:#ECEAE6;--gray:#8A8C88;--dark:#1C1D1B;
+  --fd:"Oswald",sans-serif;--fb:"DM Sans",sans-serif;--fs:"Source Serif 4",serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);background:var(--white);color:var(--dark);overflow-x:hidden}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--navy)}::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(7,25,42,0.97);backdrop-filter:blur(14px);border-bottom:1px solid rgba(200,145,30,0.18);display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:66px;transition:box-shadow .3s}
+.logo{font-family:var(--fd);font-size:17px;font-weight:700;color:var(--white);letter-spacing:2px;text-transform:uppercase;display:flex;align-items:center;gap:14px;text-decoration:none}
+.logo em{font-style:normal;color:var(--gold)}
+.logo-badge{background:var(--gold);color:var(--navy);font-size:8px;font-weight:700;letter-spacing:2px;padding:3px 9px;border-radius:2px;text-transform:uppercase;white-space:nowrap}
+.nav-links{display:flex;gap:38px;list-style:none;align-items:center}
+.nav-links a{color:rgba(247,247,245,0.6);text-decoration:none;font-size:13px;transition:color .2s}
+.nav-links a:hover{color:var(--gold2)}
+.nav-btn{background:var(--gold)!important;color:var(--navy)!important;font-weight:600!important;padding:10px 26px;border-radius:3px;transition:background .2s!important}
+.nav-btn:hover{background:var(--gold2)!important}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:52% 48%;padding-top:66px;position:relative}
+.hero-left{background:var(--navy);display:flex;flex-direction:column;justify-content:center;padding:80px 56px 80px 68px;position:relative;overflow:hidden}
+.hero-left::after{content:"";position:absolute;right:0;top:0;bottom:0;width:2px;background:var(--gold)}
+.hero-left::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(-55deg,transparent,transparent 28px,rgba(200,145,30,0.025) 28px,rgba(200,145,30,0.025) 29px);pointer-events:none}
+.accent-bar{position:absolute;left:0;top:0;bottom:0;width:5px;background:linear-gradient(to bottom,transparent,var(--gold) 25%,var(--gold) 75%,transparent)}
+.eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:34px;position:relative;z-index:1}
+.eyebrow-line{width:34px;height:1.5px;background:var(--gold);flex-shrink:0}
+.eyebrow-text{font-family:var(--fd);font-size:10px;font-weight:600;letter-spacing:4px;color:var(--gold);text-transform:uppercase}
+h1{font-family:var(--fd);font-weight:700;font-size:clamp(46px,5.5vw,84px);line-height:.93;text-transform:uppercase;letter-spacing:-1.5px;color:var(--white);position:relative;z-index:1}
+h1 .g{color:var(--gold)}
+.hero-sub{font-family:var(--fs);font-size:17px;font-weight:300;font-style:italic;line-height:1.68;color:rgba(247,247,245,0.58);max-width:420px;margin:22px 0 46px;position:relative;z-index:1}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:56px;position:relative;z-index:1}
+.btn-g{background:var(--gold);color:var(--navy);font-family:var(--fd);font-size:13px;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;text-decoration:none;padding:16px 36px;border-radius:3px;display:inline-flex;align-items:center;gap:9px;transition:background .2s,transform .15s}
+.btn-g:hover{background:var(--gold2);transform:translateY(-2px)}
+.btn-o{border:1px solid rgba(200,145,30,.4);color:rgba(247,247,245,.75);font-size:13px;text-decoration:none;padding:15px 28px;border-radius:3px;transition:border-color .2s,color .2s;position:relative;z-index:1}
+.btn-o:hover{border-color:var(--gold);color:var(--white)}
+.hero-stats{display:flex;gap:40px;padding-top:34px;border-top:1px solid rgba(200,145,30,.14);position:relative;z-index:1}
+.snum{font-family:var(--fd);font-size:34px;font-weight:700;color:var(--gold);line-height:1}
+.slbl{font-size:11px;color:rgba(247,247,245,.4);margin-top:5px;letter-spacing:.4px}
+.hero-right{position:relative;overflow:hidden;background:var(--navy2)}
+.hero-photo{width:100%;height:100%;object-fit:cover;object-position:center;display:block;filter:brightness(.55) saturate(.75)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(7,25,42,.65) 0%,transparent 50%)}
+.hero-pill{position:absolute;bottom:32px;right:32px;background:rgba(7,25,42,.92);border:1px solid rgba(200,145,30,.35);border-radius:5px;padding:14px 20px;display:flex;align-items:center;gap:14px;backdrop-filter:blur(8px)}
+.hero-pill-icon{font-size:22px}
+.hero-pill-text{font-size:12px;color:rgba(247,247,245,.65);line-height:1.55}
+.hero-pill-text strong{color:var(--white);display:block;font-size:13px;font-weight:600}
+
+/* TRUST BAR */
+.trust{background:var(--navy2);border-top:1px solid rgba(200,145,30,.1);border-bottom:1px solid rgba(200,145,30,.1);padding:18px 56px;display:flex;align-items:center;justify-content:center;gap:44px;flex-wrap:wrap}
+.ti{display:flex;align-items:center;gap:9px;font-size:13px;color:rgba(247,247,245,.62)}
+.td{width:1px;height:22px;background:rgba(200,145,30,.18);flex-shrink:0}
+
+/* LABELS */
+.sl-wrap{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.sl-line{width:28px;height:1.5px;background:var(--gold);flex-shrink:0}
+.sl-txt{font-family:var(--fd);font-size:10px;font-weight:600;letter-spacing:3.5px;color:var(--gold);text-transform:uppercase}
+.sec-title{font-family:var(--fd);font-size:clamp(30px,4vw,52px);font-weight:700;text-transform:uppercase;letter-spacing:-.5px;line-height:1.05}
+.sec-title .g{color:var(--gold)}
+
+/* ABOUT */
+.about{display:grid;grid-template-columns:1fr 1fr;min-height:660px}
+.about-photo-col{position:relative;overflow:hidden}
+.about-photo{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+.about-photo-overlay{position:absolute;inset:0;background:linear-gradient(to right,transparent 55%,var(--white) 100%)}
+.credential{position:absolute;bottom:40px;left:40px;background:var(--navy);border-left:3px solid var(--gold);padding:18px 24px;border-radius:0 5px 5px 0;max-width:280px}
+.cred-title{font-family:var(--fd);font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:7px}
+.cred-text{font-size:13px;color:rgba(247,247,245,.8);line-height:1.55}
+.about-content{padding:80px 68px 80px 56px;display:flex;flex-direction:column;justify-content:center;background:var(--white)}
+.about-lead{font-family:var(--fs);font-size:19px;font-weight:300;font-style:italic;line-height:1.68;color:#555;margin-bottom:26px;max-width:480px}
+.about-body{font-size:15px;line-height:1.78;color:#555;max-width:480px;margin-bottom:38px}
+.pills{display:flex;gap:10px;flex-wrap:wrap}
+.pill{background:var(--gold3);border:1px solid rgba(200,145,30,.3);color:#7A5A0F;font-size:12px;font-weight:500;padding:7px 16px;border-radius:20px}
+
+/* ROUTES */
+.routes-sec{background:var(--off);padding:100px 56px}
+.routes-head{text-align:center;margin-bottom:64px}
+.routes-head .sl-wrap{justify-content:center}
+.rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;max-width:1100px;margin:0 auto}
+.rc{position:relative;overflow:hidden;cursor:pointer}
+.rc:first-child{grid-row:span 2}
+.rc-img{width:100%;height:100%;min-height:280px;object-fit:cover;display:block;transition:transform .55s,filter .4s;filter:brightness(.75) saturate(.8)}
+.rc:first-child .rc-img{min-height:100%}
+.rc:hover .rc-img{transform:scale(1.05);filter:brightness(.6) saturate(.75)}
+.rc-over{position:absolute;inset:0;background:linear-gradient(to top,rgba(7,25,42,.95) 0%,rgba(7,25,42,.1) 60%,transparent 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:28px}
+.rc-tag{font-family:var(--fd);font-size:9px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.rc-name{font-family:var(--fd);font-size:22px;font-weight:700;text-transform:uppercase;color:var(--white);line-height:1.1;margin-bottom:8px}
+.rc:first-child .rc-name{font-size:30px}
+.rc-detail{font-size:13px;color:rgba(247,247,245,.62);line-height:1.5}
+.rc-price{position:absolute;top:20px;right:20px;background:var(--gold);color:var(--navy);font-family:var(--fd);font-size:12px;font-weight:700;letter-spacing:1px;padding:6px 14px;border-radius:2px}
+
+/* HOW */
+.how-sec{background:var(--navy);padding:100px 56px}
+.how-head{text-align:center;margin-bottom:72px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);max-width:1100px;margin:0 auto;position:relative}
+.steps-line{position:absolute;top:26px;left:calc(12.5% + 26px);right:calc(12.5% + 26px);height:1px;background:rgba(200,145,30,.2);z-index:0}
+.step{padding:0 30px;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;z-index:1}
+.step-n{width:52px;height:52px;border-radius:50%;background:rgba(200,145,30,.1);border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:18px;font-weight:700;color:var(--gold);margin-bottom:22px}
+.step-t{font-family:var(--fd);font-size:14px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--white);margin-bottom:12px}
+.step-d{font-size:13px;color:rgba(247,247,245,.45);line-height:1.68}
+
+/* VEHICLES */
+.veh-sec{padding:100px 56px;background:var(--white)}
+.veh-head{margin-bottom:60px}
+.vgrid{display:grid;grid-template-columns:1fr 1fr;gap:3px;max-width:1100px}
+.vc{position:relative;overflow:hidden}
+.vc-img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;filter:brightness(.72) saturate(.85);transition:filter .4s}
+.vc:hover .vc-img{filter:brightness(.58) saturate(.8)}
+.vc-info{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(7,25,42,.96),transparent);padding:24px 30px}
+.vc-name{font-family:var(--fd);font-size:20px;font-weight:700;text-transform:uppercase;color:var(--white);margin-bottom:5px}
+.vc-cap{font-size:12px;color:rgba(247,247,245,.58)}
+
+/* GALLERY */
+.gstrip{display:grid;grid-template-columns:repeat(5,1fr);gap:3px;height:210px}
+.gstrip img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.72) saturate(.65);transition:filter .35s,transform .4s;cursor:pointer}
+.gstrip img:hover{filter:brightness(.95) saturate(1);transform:scale(1.04)}
+
+/* TESTIMONIALS */
+.proof-sec{background:var(--off);padding:100px 56px}
+.proof-head{text-align:center;margin-bottom:64px}
+.proof-head .sl-wrap{justify-content:center}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1100px;margin:0 auto}
+.pc{background:var(--white);border:1px solid #E0DDD8;border-radius:4px;padding:32px}
+.pc-stars{color:var(--gold);font-size:13px;margin-bottom:16px}
+.pc-text{font-family:var(--fs);font-size:15px;font-style:italic;font-weight:300;line-height:1.72;color:#555;margin-bottom:24px}
+.pc-author{font-size:12px;font-weight:600;letter-spacing:.3px;color:var(--dark);text-transform:uppercase}
+.pc-route{font-size:11px;color:var(--gray);margin-top:3px}
+.pc-hl{background:var(--navy);border-color:var(--navy);grid-row:span 2;display:flex;flex-direction:column;justify-content:center;text-align:center}
+.pc-hl .pc-text{color:rgba(247,247,245,.72)}
+.pc-hl .pc-author{color:var(--white)}
+.pc-hl .pc-route{color:rgba(247,247,245,.38)}
+.bq{font-family:var(--fs);font-size:clamp(26px,3.2vw,42px);font-weight:300;font-style:italic;color:var(--white);line-height:1.28;margin-bottom:28px}
+.bq .gq{color:var(--gold2)}
+
+/* CONTACT */
+.contact-sec{background:var(--navy);padding:100px 56px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.contact-desc{font-size:15px;line-height:1.78;color:rgba(247,247,245,.45);max-width:420px;margin-bottom:42px}
+.cmethods{display:flex;flex-direction:column;gap:14px}
+.cmethod{display:flex;align-items:center;gap:16px;text-decoration:none;padding:16px 20px;border:1px solid rgba(200,145,30,.14);border-radius:4px;transition:border-color .2s,background .2s}
+.cmethod:hover{border-color:var(--gold);background:rgba(200,145,30,.05)}
+.cicon{width:44px;height:44px;border-radius:50%;background:rgba(200,145,30,.1);border:1px solid rgba(200,145,30,.22);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px}
+.clabel{font-size:11px;color:var(--gray);letter-spacing:.5px;margin-bottom:3px}
+.cval{font-size:15px;font-weight:500;color:var(--white)}
+.cform{background:rgba(255,255,255,.04);border:1px solid rgba(200,145,30,.1);border-radius:6px;padding:44px}
+.form-title{font-family:var(--fd);font-size:20px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--white);margin-bottom:28px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fg{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.fg label{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--gray)}
+.fg input,.fg select,.fg textarea{background:rgba(255,255,255,.05);border:1px solid rgba(200,145,30,.14);border-radius:3px;padding:12px 16px;font-family:var(--fb);font-size:14px;color:var(--white);outline:none;transition:border-color .2s;-webkit-appearance:none}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(247,247,245,.18)}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--gold)}
+.fg select option{background:var(--navy);color:var(--white)}
+.fg textarea{resize:vertical;min-height:88px}
+.fsub{width:100%;padding:16px;background:var(--gold);color:var(--navy);font-family:var(--fd);font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;border:none;border-radius:3px;cursor:pointer;transition:background .2s,transform .15s;margin-top:6px}
+.fsub:hover{background:var(--gold2);transform:translateY(-1px)}
+
+/* FOOTER */
+footer{background:#050E19;padding:38px 56px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(200,145,30,.08);flex-wrap:wrap;gap:20px}
+.flogo{font-family:var(--fd);font-size:15px;font-weight:700;color:rgba(247,247,245,.25);letter-spacing:2px}
+.flogo span{color:var(--gold)}
+.fcopy{font-size:12px;color:rgba(247,247,245,.2)}
+.flinks{display:flex;gap:24px}
+.flinks a{font-size:12px;color:rgba(247,247,245,.28);text-decoration:none;transition:color .2s}
+.flinks a:hover{color:var(--gold)}
+
+/* WA FLOAT */
+.waf{position:fixed;bottom:28px;right:28px;z-index:999;width:58px;height:58px;border-radius:50%;background:#25D366;box-shadow:0 4px 22px rgba(37,211,102,.42);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.waf:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(37,211,102,.58)}
+.waf svg{width:28px;height:28px;fill:white}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  nav{padding:0 22px}.nav-links{display:none}
+  .hero{grid-template-columns:1fr}.hero-right{display:none}
+  .hero-left{padding:80px 24px 64px}
+  .about{grid-template-columns:1fr}.about-photo-col{height:340px}.about-content{padding:52px 24px}
+  .routes-sec,.how-sec,.veh-sec,.proof-sec{padding:72px 24px}
+  .contact-sec{grid-template-columns:1fr;gap:52px;padding:72px 24px}
+  .rgrid{grid-template-columns:1fr}.rc:first-child{grid-row:auto}
+  .steps{grid-template-columns:1fr 1fr;gap:40px}.steps-line{display:none}
+  .vgrid{grid-template-columns:1fr}
+  .pgrid{grid-template-columns:1fr}.pc-hl{grid-row:auto}
+  .gstrip{grid-template-columns:repeat(3,1fr);height:140px}
+  .gstrip img:nth-child(n+4){display:none}
+  .frow{grid-template-columns:1fr}
+  footer{flex-direction:column;text-align:center;padding:32px 24px}
+  .trust{padding:14px 20px;gap:18px}.td{display:none}
+  .about-photo-overlay{background:linear-gradient(to bottom,transparent 50%,var(--white) 100%)}
+}
+@media(max-width:480px){
+  .hero-left{padding:72px 20px 52px}
+  h1{font-size:42px}
+  .hero-stats{gap:24px}
+  .snum{font-size:28px}
+  .routes-sec,.how-sec,.veh-sec,.proof-sec{padding:56px 20px}
+  .contact-sec{padding:56px 20px}
+  .cform{padding:28px 20px}
+  .gstrip{grid-template-columns:repeat(2,1fr)}
+  .gstrip img:nth-child(n+3){display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="logo">Janilson <em>Seabra</em> <span class="logo-badge">Transfer</span></a>
+  <ul class="nav-links">
+    <li><a href="#servicos">Servicos</a></li>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#depoimentos">Depoimentos</a></li>
+    <li><a href="#contato" class="nav-btn">Reservar Agora</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="accent-bar"></div>
+    <div class="eyebrow"><div class="eyebrow-line"></div><div class="eyebrow-text">Newark, NJ · Nova York · JFK · EWR · LGA</div></div>
+    <h1>Chegue em<br><span class="g">Nova York</span><br>com Classe</h1>
+    <p class="hero-sub">Transfer exclusivo, pontual e seguro — conduzido por um militar aposentado do Corpo de Bombeiros com mais de 20 anos de servico e disciplina.</p>
+    <div class="hero-btns">
+      <a href="https://wa.me/19738617932" target="_blank" class="btn-g">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Reservar pelo WhatsApp
+      </a>
+      <a href="#servicos" class="btn-o">Ver Rotas &rarr;</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="snum">24/7</div><div class="slbl">Disponibilidade</div></div>
+      <div><div class="snum">&#9733; 5.0</div><div class="slbl">Avaliacao media</div></div>
+      <div><div class="snum">20+</div><div class="slbl">Anos de servico</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img class="hero-photo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjkwMCIgdmlld0JveD0iMCAwIDEyMDAgOTAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwOTE5MjkiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMxQTNBNUMiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI5MDAiIGZpbGw9InVybCgjZykiLz48dGV4dCB4PSI2MDAiIHk9IjQ0MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjg4KSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSI+TmV3IFlvcmsgQ2l0eTwvdGV4dD48dGV4dCB4PSI2MDAiIHk9IjQ3MiIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEzIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNTUpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5OZXdhcmsgwrcgTWFuaGF0dGFuIMK3IEpGSyDCtyBFV1I8L3RleHQ+PC9zdmc+" alt="Nova York City">
+    <div class="hero-overlay"></div>
+    <div class="hero-pill">
+      <div class="hero-pill-icon">&#128205;</div>
+      <div class="hero-pill-text"><strong>Newark, NJ &rarr; New York City</strong>JFK · LGA · EWR · Manhattan e toda a regiao</div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust">
+  <div class="ti">&#127894;&#65039; Militar Aposentado · Corpo de Bombeiros</div>
+  <div class="td"></div>
+  <div class="ti">&#128737;&#65039; Licenciado e Segurado em NJ</div>
+  <div class="td"></div>
+  <div class="ti">&#9201;&#65039; Pontualidade Garantida</div>
+  <div class="td"></div>
+  <div class="ti">&#127463;&#127479; Atendimento em Portugues</div>
+  <div class="td"></div>
+  <div class="ti">&#128205; Baseado em Newark, NJ</div>
+</div>
+
+<!-- SOBRE -->
+<section class="about" id="sobre">
+  <div class="about-photo-col">
+    <img class="about-photo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNzAwIiB2aWV3Qm94PSIwIDAgODAwIDcwMCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMEQyMzQwIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDkxOTI5Ii8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI3MDAiIGZpbGw9InVybCgjZykiLz48dGV4dCB4PSI0MDAiIHk9IjM0MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjg4KSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSI+SmFuaWxzb24gU2VhYnJhPC90ZXh0Pjx0ZXh0IHg9IjQwMCIgeT0iMzcyIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTMiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC41NSkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk1pbGl0YXIgQXBvc2VudGFkbyDCtyBUcmFuc2ZlciBQcmVtaXVtPC90ZXh0Pjwvc3ZnPg==" alt="Janilson Seabra Transfer">
+    <div class="about-photo-overlay"></div>
+    <div class="credential">
+      <div class="cred-title">&#127894;&#65039; Credencial Militar</div>
+      <div class="cred-text">Militar Aposentado · Corpo de Bombeiros Militar do Distrito Federal · Brasilia, Brasil</div>
+    </div>
+  </div>
+  <div class="about-content">
+    <div class="sl-wrap"><div class="sl-line"></div><div class="sl-txt">Quem esta ao volante</div></div>
+    <h2 class="sec-title" style="color:var(--dark);margin-bottom:24px">Disciplina <span class="g">Militar</span><br>em cada corrida</h2>
+    <p class="about-lead">Quando voce entra no carro, sabe que esta em boas maos.</p>
+    <p class="about-body">
+      Janilson Seabra traz para as ruas de Nova York os mesmos valores que definem mais de 20 anos de servico no Corpo de Bombeiros Militar do Brasil: responsabilidade, pontualidade e cuidado genuino com cada pessoa.
+      <br><br>
+      Brasileiro radicado em Newark, NJ, oferece um servico que vai alem do transporte &mdash; e acolhimento, seguranca e a certeza de que voce chegara ao destino com tranquilidade. Para brasileiros chegando pela primeira vez em NY, ter alguem que fala portugues ao volante faz toda a diferenca.
+    </p>
+    <div class="pills">
+      <span class="pill">&#127894;&#65039; Militar Aposentado</span>
+      <span class="pill">&#127463;&#127479; Falamos Portugues</span>
+      <span class="pill">&#128680; Ex-Bombeiro</span>
+      <span class="pill">&#128205; Newark, NJ</span>
+      <span class="pill">&#128737;&#65039; Licenciado em NJ</span>
+      <span class="pill">&#9992;&#65039; Rastreio de Voo</span>
+    </div>
+  </div>
+</section>
+
+<!-- ROTAS -->
+<section class="routes-sec" id="servicos">
+  <div class="routes-head">
+    <div class="sl-wrap"><div class="sl-line"></div><div class="sl-txt">Rotas e Servicos</div></div>
+    <h2 class="sec-title" style="color:var(--dark)">Onde <span class="g">Levamos</span> Voce</h2>
+  </div>
+  <div class="rgrid">
+    <div class="rc">
+      <img class="rc-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgNjAwIDUwMCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMDkxOTI5Ii8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMGEzZDYyIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjYwMCIgaGVpZ2h0PSI1MDAiIGZpbGw9InVybCgjZykiLz48dGV4dCB4PSIzMDAiIHk9IjI0MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjg4KSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSI+4pyIICBKRksgwrcgTEdBIMK3IEVXUjwvdGV4dD48dGV4dCB4PSIzMDAiIHk9IjI3MiIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEzIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNTUpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5BZXJvcG9ydG9zIGRlIE5vdmEgWW9yazwvdGV4dD48L3N2Zz4=" alt="JFK LGA EWR">
+      <div class="rc-over">
+        <div class="rc-tag">Aeroporto · Principal</div>
+        <div class="rc-name">JFK · LGA · EWR<br>Newark Liberty</div>
+        <div class="rc-detail">Transfer com rastreamento de voo em tempo real. Sem surpresas, sem espera.</div>
+      </div>
+      <div class="rc-price">A partir de $65</div>
+    </div>
+    <div class="rc">
+      <img class="rc-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iMzUwIiB2aWV3Qm94PSIwIDAgNjAwIDM1MCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMWUzNzk5Ii8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMGMyNDYxIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjYwMCIgaGVpZ2h0PSIzNTAiIGZpbGw9InVybCgjZykiLz48dGV4dCB4PSIzMDAiIHk9IjE2NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjg4KSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSI+TWFuaGF0dGFuIGUgTllDPC90ZXh0Pjx0ZXh0IHg9IjMwMCIgeT0iMTk3IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTMiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC41NSkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkNpdHkgVG91ciDCtyBUaW1lcyBTcXVhcmUgwrcgQ2VudHJhbCBQYXJrPC90ZXh0Pjwvc3ZnPg==" alt="Manhattan NYC">
+      <div class="rc-over">
+        <div class="rc-tag">City Tour</div>
+        <div class="rc-name">Manhattan &amp; NYC</div>
+        <div class="rc-detail">Times Square, Central Park, The Vessel, Wall St. e muito mais.</div>
+      </div>
+    </div>
+    <div class="rc">
+      <img class="rc-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iMzUwIiB2aWV3Qm94PSIwIDAgNjAwIDM1MCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMDA2MjY2Ii8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDA3OTZiIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjYwMCIgaGVpZ2h0PSIzNTAiIGZpbGw9InVybCgjZykiLz48dGV4dCB4PSIzMDAiIHk9IjE2NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjg4KSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSI+SG90ZWlzIGUgUmVzb3J0czwvdGV4dD48dGV4dCB4PSIzMDAiIHk9IjE5NyIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEzIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNTUpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5OZXdhcmsgwrcgSG9ib2tlbiDCtyBKZXJzZXkgQ2l0eTwvdGV4dD48L3N2Zz4=" alt="Hoteis">
+      <div class="rc-over">
+        <div class="rc-tag">Hospedagem</div>
+        <div class="rc-name">Hoteis &amp; Resorts</div>
+        <div class="rc-detail">Newark, Hoboken, Jersey City e toda a regiao metropolitana.</div>
+      </div>
+    </div>
+    <div class="rc">
+      <img class="rc-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iMzUwIiB2aWV3Qm94PSIwIDAgNjAwIDM1MCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMzc0NzRmIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjNTQ2ZTdhIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjYwMCIgaGVpZ2h0PSIzNTAiIGZpbGw9InVybCgjZykiLz48dGV4dCB4PSIzMDAiIHk9IjE2NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjg4KSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSI+RXZlbnRvcyBlIENvcnBvcmF0aXZvPC90ZXh0Pjx0ZXh0IHg9IjMwMCIgeT0iMTk3IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTMiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC41NSkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkNhc2FtZW50b3MgwrcgQ29uZmVyZW5jaWFzPC90ZXh0Pjwvc3ZnPg==" alt="Eventos">
+      <div class="rc-over">
+        <div class="rc-tag">Eventos</div>
+        <div class="rc-name">Casamentos &amp; Corporativo</div>
+        <div class="rc-detail">Chegue com estilo e pontualidade em qualquer ocasiao especial.</div>
+      </div>
+    </div>
+    <div class="rc">
+      <img class="rc-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iMzUwIiB2aWV3Qm94PSIwIDAgNjAwIDM1MCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMDY1MkREIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMTI4OUE3Ii8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjYwMCIgaGVpZ2h0PSIzNTAiIGZpbGw9InVybCgjZykiLz48dGV4dCB4PSIzMDAiIHk9IjE2NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjg4KSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSI+UG9ydG8gZGUgQ3J1emVpcm88L3RleHQ+PHRleHQgeD0iMzAwIiB5PSIxOTciIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMyIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjU1KSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+QmF5b25uZSDCtyBDYXBlIExpYmVydHk8L3RleHQ+PC9zdmc+" alt="Porto Cruzeiro">
+      <div class="rc-over">
+        <div class="rc-tag">Porto de Cruzeiro</div>
+        <div class="rc-name">Bayonne &amp; Cape Liberty</div>
+        <div class="rc-detail">Transfer para embarque e desembarque de cruzeiros na regiao.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="how-sec">
+  <div class="how-head">
+    <div class="sl-wrap" style="justify-content:center"><div class="sl-line"></div><div class="sl-txt">Processo Simples</div></div>
+    <h2 class="sec-title" style="color:var(--white)">Como <span class="g">Funciona</span></h2>
+  </div>
+  <div class="steps">
+    <div class="steps-line"></div>
+    <div class="step"><div class="step-n">01</div><div class="step-t">Fale Conosco</div><div class="step-d">WhatsApp ou formulario. Resposta rapida, atendimento em portugues.</div></div>
+    <div class="step"><div class="step-n">02</div><div class="step-t">Escolha a Rota</div><div class="step-d">Informe origem, destino, data, horario e numero de passageiros.</div></div>
+    <div class="step"><div class="step-n">03</div><div class="step-t">Confirmacao</div><div class="step-d">Receba a confirmacao da reserva com todos os detalhes da viagem.</div></div>
+    <div class="step"><div class="step-n">04</div><div class="step-t">Embarque</div><div class="step-d">Motorista pontual, veiculo limpo e confortavel. Voce so aproveita.</div></div>
+  </div>
+</section>
+
+<!-- VEICULOS -->
+<section class="veh-sec">
+  <div class="veh-head">
+    <div class="sl-wrap"><div class="sl-line"></div><div class="sl-txt">Nossa Frota</div></div>
+    <h2 class="sec-title" style="color:var(--dark)">Conforto <span class="g">&amp; Elegancia</span></h2>
+  </div>
+  <div class="vgrid">
+    <div class="vc">
+      <img class="vc-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMWUyNzJlIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMmYzNjQwIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjkwMCIgaGVpZ2h0PSI1MDAiIGZpbGw9InVybCgjZykiLz48dGV4dCB4PSI0NTAiIHk9IjI0MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjg4KSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSI+U1VWIEZvcmQgRXhwbG9yZXI8L3RleHQ+PHRleHQgeD0iNDUwIiB5PSIyNzIiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMyIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjU1KSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+QXRlIDYgcGFzc2FnZWlyb3MgwrcgUG9ydGEtbWFsYXMgYW1wbG88L3RleHQ+PC9zdmc+" alt="SUV Ford Explorer">
+      <div class="vc-info">
+        <div class="vc-name">SUV Premium · Ford Explorer</div>
+        <div class="vc-cap">Ate 6 passageiros · Porta-malas amplo · Ar-condicionado · Agua cortesia</div>
+      </div>
+    </div>
+    <div class="vc">
+      <img class="vc-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgOTAwIDUwMCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMmQzNDM2Ii8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjNDg1NDYwIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjkwMCIgaGVpZ2h0PSI1MDAiIGZpbGw9InVybCgjZykiLz48dGV4dCB4PSI0NTAiIHk9IjI0MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjg4KSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSI+U2VkYW4gRXhlY3V0aXZvPC90ZXh0Pjx0ZXh0IHg9IjQ1MCIgeT0iMjcyIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTMiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC41NSkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkF0ZSAzIHBhc3NhZ2Vpcm9zIMK3IENvbmZvcnRvIHRvdGFsPC90ZXh0Pjwvc3ZnPg==" alt="Sedan Executivo">
+      <div class="vc-info">
+        <div class="vc-name">Sedan Executivo</div>
+        <div class="vc-cap">Ate 3 passageiros · Ideal para executivos e transfers individuais</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA -->
+<div class="gstrip">
+  <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjIwIiB2aWV3Qm94PSIwIDAgNDAwIDIyMCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMDkxOTI5Ii8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMWEzYTVjIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyMjAiIGZpbGw9InVybCgjZykiLz48dGV4dCB4PSIyMDAiIHk9IjExMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjg4KSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSI+TllDIFNreWxpbmU8L3RleHQ+PC9zdmc+" alt="NYC Skyline">
+  <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjIwIiB2aWV3Qm94PSIwIDAgNDAwIDIyMCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjN2IyNDFjIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjYzAzOTJiIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyMjAiIGZpbGw9InVybCgjZykiLz48dGV4dCB4PSIyMDAiIHk9IjExMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjg4KSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSI+VGltZXMgU3F1YXJlPC90ZXh0Pjwvc3ZnPg==" alt="Times Square">
+  <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjIwIiB2aWV3Qm94PSIwIDAgNDAwIDIyMCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMWU4NDQ5Ii8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMjdhZTYwIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyMjAiIGZpbGw9InVybCgjZykiLz48dGV4dCB4PSIyMDAiIHk9IjExMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjg4KSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSI+Q2VudHJhbCBQYXJrPC90ZXh0Pjwvc3ZnPg==" alt="Central Park">
+  <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjIwIiB2aWV3Qm94PSIwIDAgNDAwIDIyMCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjNjE2YTZiIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjOTVhNWE2Ii8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyMjAiIGZpbGw9InVybCgjZykiLz48dGV4dCB4PSIyMDAiIHk9IjExMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjg4KSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSI+RW1waXJlIFN0YXRlPC90ZXh0Pjwvc3ZnPg==" alt="Empire State">
+  <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjIwIiB2aWV3Qm94PSIwIDAgNDAwIDIyMCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMTU0MzYwIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMjQ3MWEzIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyMjAiIGZpbGw9InVybCgjZykiLz48dGV4dCB4PSIyMDAiIHk9IjExMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjg4KSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSI+SkZLIEFpcnBvcnQ8L3RleHQ+PC9zdmc+" alt="JFK Airport">
+</div>
+
+<!-- DEPOIMENTOS -->
+<section class="proof-sec" id="depoimentos">
+  <div class="proof-head">
+    <div class="sl-wrap"><div class="sl-line"></div><div class="sl-txt">Quem ja viajou</div></div>
+    <h2 class="sec-title" style="color:var(--dark)">O que dizem <span class="g">nossos clientes</span></h2>
+  </div>
+  <div class="pgrid">
+    <div class="pc">
+      <div class="pc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="pc-text">Pontualidade impecavel! Estava nervosa com o horario do voo e o Janilson chegou 20 minutos antes. Veiculo limpo e o atendimento em portugues foi um diferencial enorme.</p>
+      <div class="pc-author">Claudia M.</div>
+      <div class="pc-route">Sao Paulo &rarr; EWR &rarr; Midtown Manhattan</div>
+    </div>
+    <div class="pc pc-hl">
+      <p class="bq">"Saber que<br><span class="gq">um militar</span><br>esta ao volante<br>muda tudo."</p>
+      <p class="pc-text">A sensacao de seguranca e diferente. Chegamos ao hotel em Manhattan sem nenhum estresse. Ja recomendei para toda a familia.</p>
+      <div class="pc-author">Roberto &amp; Ana K.</div>
+      <div class="pc-route">EWR &rarr; Midtown Manhattan</div>
+    </div>
+    <div class="pc">
+      <div class="pc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="pc-text">Excelente profissional! Atende em portugues, o que facilita muito para quem chega pela primeira vez em NY. Preco justo e servico de primeira.</p>
+      <div class="pc-author">Tadeu L.</div>
+      <div class="pc-route">JFK Airport &rarr; Newark, NJ</div>
+    </div>
+    <div class="pc">
+      <div class="pc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="pc-text">City tour incrivel! Passamos pelo The Vessel, Brooklyn Bridge e Central Park. Conhece muito bem a cidade e deu varias dicas excelentes.</p>
+      <div class="pc-author">Marina S.</div>
+      <div class="pc-route">City Tour · Manhattan, NYC</div>
+    </div>
+    <div class="pc">
+      <div class="pc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="pc-text">Contratei para o transfer do cruzeiro em Bayonne. Super organizado, confirmou todos os detalhes com antecedencia. Certamente vou usar de novo.</p>
+      <div class="pc-author">Marcia F.</div>
+      <div class="pc-route">Bayonne Cruise Port &rarr; EWR</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section class="contact-sec" id="contato">
+  <div>
+    <div class="sl-wrap"><div class="sl-line"></div><div class="sl-txt">Fale Conosco</div></div>
+    <h2 class="sec-title" style="color:var(--white);margin-bottom:20px">Reserve <span class="g">Agora</span></h2>
+    <p class="contact-desc">Atendemos por WhatsApp ou formulario. Resposta rapida, sempre em portugues. Disponivel 24h por dia, 7 dias por semana.</p>
+    <div class="cmethods">
+      <a href="https://wa.me/19738617932" target="_blank" class="cmethod">
+        <div class="cicon">&#128241;</div>
+        <div><div class="clabel">WhatsApp (Principal)</div><div class="cval">+1 (973) 861-7932</div></div>
+      </a>
+      <div class="cmethod" style="opacity:.4;cursor:default">
+        <div class="cicon">&#128231;</div>
+        <div><div class="clabel">E-mail</div><div class="cval">Em breve</div></div>
+      </div>
+      <div class="cmethod" style="opacity:.4;cursor:default">
+        <div class="cicon">&#128247;</div>
+        <div><div class="clabel">Instagram</div><div class="cval">Em breve</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="cform">
+    <div class="form-title">&#128203; Solicitar Orcamento</div>
+    <div class="frow">
+      <div class="fg"><label>Nome completo</label><input type="text" id="fn" placeholder="Seu nome"></div>
+      <div class="fg"><label>WhatsApp</label><input type="tel" id="ft" placeholder="+1 (000) 000-0000"></div>
+    </div>
+    <div class="frow">
+      <div class="fg"><label>Origem</label><input type="text" id="fo" placeholder="Ex: JFK Airport"></div>
+      <div class="fg"><label>Destino</label><input type="text" id="fd2" placeholder="Ex: Hotel em Manhattan"></div>
+    </div>
+    <div class="frow">
+      <div class="fg"><label>Data da viagem</label><input type="date" id="fdt"></div>
+      <div class="fg"><label>Horario</label><input type="time" id="fhr"></div>
+    </div>
+    <div class="frow">
+      <div class="fg"><label>Passageiros</label>
+        <select id="fp"><option>1 passageiro</option><option>2 passageiros</option><option>3 passageiros</option><option>4 passageiros</option><option>5-6 passageiros</option></select>
+      </div>
+      <div class="fg"><label>Tipo de servico</label>
+        <select id="fs2"><option>Transfer Aeroporto</option><option>City Tour NYC</option><option>Transfer Hotel</option><option>Evento / Corporativo</option><option>Porto de Cruzeiro</option></select>
+      </div>
+    </div>
+    <div class="fg"><label>Observacoes</label><textarea id="fob" placeholder="Numero do voo, bagagem extra, necessidades especiais..."></textarea></div>
+    <button class="fsub" onclick="enviarWA()">Enviar pelo WhatsApp &rarr;</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="flogo">JANILSON <span>SEABRA</span> &middot; TRANSFER</div>
+  <div class="fcopy">&copy; 2025 Janilson Seabra Transfer &middot; Newark, NJ</div>
+  <div class="flinks"><a href="#sobre">Sobre</a><a href="#servicos">Servicos</a><a href="#contato">Contato</a></div>
+</footer>
+
+<!-- WA FLOAT -->
+<a href="https://wa.me/19738617932" target="_blank" class="waf" title="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+function enviarWA(){
+  var n=document.getElementById("fn").value||"Cliente";
+  var t=document.getElementById("ft").value||"";
+  var o=document.getElementById("fo").value||"a informar";
+  var d=document.getElementById("fd2").value||"a informar";
+  var dt=document.getElementById("fdt").value||"a confirmar";
+  var hr=document.getElementById("fhr").value||"a confirmar";
+  var p=document.getElementById("fp").value;
+  var s=document.getElementById("fs2").value;
+  var ob=document.getElementById("fob").value;
+  var msg="Ola Janilson! Quero solicitar um orcamento \u{1F697}\u2728\n\n"
+    +"\u{1F464} *Nome:* "+n+(t?"\n\u{1F4DE} *Tel:* "+t:"")+"\n\n"
+    +"\u{1F4CD} *Origem:* "+o+"\n"
+    +"\u{1F3C1} *Destino:* "+d+"\n"
+    +"\u{1F4C5} *Data:* "+dt+"  \u23F0 *Horario:* "+hr+"\n"
+    +"\u{1F465} *Passageiros:* "+p+"\n"
+    +"\u{1F698} *Servico:* "+s
+    +(ob?"\n\n\u{1F4DD} *Obs:* "+ob:"")
+    +"\n\nAguardo retorno! \u{1F60A}";
+  window.open("https://wa.me/19738617932?text="+encodeURIComponent(msg),"_blank");
+}
+document.querySelectorAll("a[href^=\"#\"]").forEach(function(a){
+  a.addEventListener("click",function(e){
+    var t=document.querySelector(a.getAttribute("href"));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:"smooth",block:"start"})}
+  });
+});
+window.addEventListener("scroll",function(){
+  document.getElementById("nav").style.boxShadow=window.scrollY>60?"0 4px 28px rgba(0,0,0,0.45)":"none";
+});
+</script>
+</body>
+</html>
