@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia de Uso — DNA Viral</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E63946;
+    --red-dark: #C1121F;
+    --red-dim: rgba(230,57,70,0.08);
+    --black: #000000;
+    --dark: #111111;
+    --dark2: #1A1A1A;
+    --dark3: #222222;
+    --white: #F5F5F5;
+    --gray: #888888;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* HEADER */
+  header {
+    background: linear-gradient(135deg, var(--black) 0%, var(--dark2) 100%);
+    border-bottom: 1px solid var(--red-dark);
+    padding: 3rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(230,57,70,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .logo-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.4em;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  header h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+  }
+
+  header h1 span { color: var(--red); }
+
+  header p {
+    color: var(--gray);
+    font-size: 1rem;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .red-line {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--red), transparent);
+    margin: 1.5rem auto;
+  }
+
+  /* CONTAINER */
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+
+  /* SECTION */
+  .section {
+    margin-bottom: 3rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.6s forwards;
+  }
+
+  .section:nth-child(1) { animation-delay: 0.1s; }
+  .section:nth-child(2) { animation-delay: 0.2s; }
+  .section:nth-child(3) { animation-delay: 0.3s; }
+  .section:nth-child(4) { animation-delay: 0.4s; }
+  .section:nth-child(5) { animation-delay: 0.5s; }
+  .section:nth-child(6) { animation-delay: 0.6s; }
+  .section:nth-child(7) { animation-delay: 0.7s; }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--dark3);
+  }
+
+  .section-number {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--red-dark);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    color: var(--red);
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    color: var(--white);
+  }
+
+  /* STEPS */
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .step {
+    background: var(--dark2);
+    border: 1px solid var(--dark3);
+    border-left: 3px solid var(--red-dark);
+    border-radius: 0 8px 8px 0;
+    padding: 1.25rem 1.5rem;
+    transition: border-left-color 0.3s;
+  }
+
+  .step:hover { border-left-color: var(--red); }
+
+  .step-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--red);
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .step p { color: #BBBBBB; font-size: 0.95rem; }
+  .step strong { color: var(--white); }
+
+  /* HIGHLIGHT BOX */
+  .highlight {
+    background: linear-gradient(135deg, rgba(230,57,70,0.08), rgba(230,57,70,0.03));
+    border: 1px solid var(--red-dark);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .highlight .icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .highlight p { color: #CCCCCC; font-size: 0.95rem; }
+
+  /* TIP */
+  .tip {
+    background: var(--dark2);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    margin-top: 0.75rem;
+  }
+
+  .tip-icon { color: var(--red); font-size: 1rem; flex-shrink: 0; margin-top: 2px; }
+  .tip p { color: #AAAAAA; font-size: 0.875rem; }
+
+  /* GROUPS LIST */
+  .groups-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .group-item {
+    background: var(--dark2);
+    border: 1px solid var(--dark3);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .group-badge {
+    background: linear-gradient(135deg, var(--red-dark), var(--red));
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.3rem 0.7rem;
+    border-radius: 20px;
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .group-name { color: var(--white); font-size: 0.95rem; }
+
+  .group-price {
+    margin-left: auto;
+    background: var(--dark3);
+    color: var(--red);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    border: 1px solid var(--red-dark);
+    white-space: nowrap;
+  }
+
+  /* CONTACT CARD */
+  .contact-card {
+    background: linear-gradient(135deg, var(--dark2), var(--dark3));
+    border: 1px solid var(--red-dark);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+
+  .contact-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-card p { color: var(--gray); font-size: 0.9rem; margin-bottom: 1.25rem; }
+
+  .contact-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--red-dark), var(--red));
+    color: white;
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 0.75rem 2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 3rem 2rem;
+    border-top: 1px solid var(--dark3);
+    color: var(--gray);
+    font-size: 0.85rem;
+  }
+
+  footer strong { color: var(--red); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-text">DNA Viral — Dailson Laurentino</div>
+  <h1>Guia de <span>Gestão</span><br>da Plataforma</h1>
+  <div class="red-line"></div>
+  <p>Tudo que você precisa saber para gerenciar sua área de membros de forma independente.</p>
+</header>
+
+<div class="container">
+
+  <!-- 1. ACESSO -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">1</div>
+      <h2 class="section-title">Como acessar a plataforma</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-title">Passo 1 — Acesse o site</div>
+        <p>Abra o navegador e acesse <strong>dashboard.kiwify.com</strong>. Clique em "Entrar" no canto superior direito.</p>
+      </div>
+      <div class="step">
+        <div class="step-title">Passo 2 — Faça login</div>
+        <p>Use o e-mail <strong>dbarbosa1992@gmail.com</strong> e sua senha para entrar no painel.</p>
+      </div>
+      <div class="step">
+        <div class="step-title">Passo 3 — Acesse sua área</div>
+        <p>No menu lateral esquerdo clique em <strong>"Área de Membros"</strong> e depois em <strong>"DNA VIRAL"</strong>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. ADICIONAR AULAS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">2</div>
+      <h2 class="section-title">Como adicionar vídeos e aulas</h2>
+    </div>
+    <div class="highlight">
+      <span class="icon">🎬</span>
+      <p>Os vídeos das aulas são hospedados diretamente na Kiwify. Você pode fazer upload em qualquer formato (MP4, MOV) com até 2GB por arquivo.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-title">Passo 1 — Entre no curso</div>
+        <p>Clique na aba <strong>"Cursos"</strong> dentro da DNA VIRAL e selecione o curso desejado (Do Zero à Monetização, Comunidade DNA Viral ou Radar Dark).</p>
+      </div>
+      <div class="step">
+        <div class="step-title">Passo 2 — Abra o módulo</div>
+        <p>Clique no módulo onde quer adicionar a aula.</p>
+      </div>
+      <div class="step">
+        <div class="step-title">Passo 3 — Adicione a aula</div>
+        <p>Clique no botão <strong>"Add"</strong> → <strong>"Add content"</strong>, dê um nome para a aula e faça o upload do vídeo usando a aba <strong>"New video"</strong>.</p>
+      </div>
+      <div class="step">
+        <div class="step-title">Passo 4 — Publique</div>
+        <p>Após o upload clique em <strong>"Create and publish"</strong> para disponibilizar para os alunos imediatamente.</p>
+      </div>
+    </div>
+    <div class="tip">
+      <span class="tip-icon">💡</span>
+      <p>Se o vídeo já existe em outro curso, use a aba <strong>"Reuse from other lessons"</strong> para vincular sem precisar fazer novo upload.</p>
+    </div>
+  </div>
+
+  <!-- 3. GRUPOS DE ACESSO -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">3</div>
+      <h2 class="section-title">Como funcionam os grupos de acesso</h2>
+    </div>
+    <p style="color:#BBBBBB; margin-bottom:1.25rem;">Cada produto está vinculado a um grupo específico. Quando um aluno compra, ele entra automaticamente no grupo correto e acessa apenas o conteúdo que comprou.</p>
+    <div class="groups-list">
+      <div class="group-item">
+        <span class="group-badge">Low Ticket</span>
+        <span class="group-name">Do Zero à Monetização</span>
+        <span class="group-price">R$ 97,00</span>
+      </div>
+      <div class="group-item">
+        <span class="group-badge">Mid Ticket</span>
+        <span class="group-name">Comunidade DNA Viral</span>
+        <span class="group-price">R$ 1.497,00</span>
+      </div>
+      <div class="group-item">
+        <span class="group-badge">High Ticket</span>
+        <span class="group-name">Mentoria Individual</span>
+        <span class="group-price">R$ 6.000,00</span>
+      </div>
+      <div class="group-item">
+        <span class="group-badge">Descontinuado</span>
+        <span class="group-name">Radar Dark</span>
+        <span class="group-price">R$ 47,00</span>
+      </div>
+    </div>
+    <div class="tip">
+      <span class="tip-icon">💡</span>
+      <p>Alunos que compraram mais de um produto podem pertencer a múltiplos grupos simultaneamente e acessar todos os conteúdos que compraram.</p>
+    </div>
+  </div>
+
+  <!-- 4. GERENCIAR ALUNOS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">4</div>
+      <h2 class="section-title">Como gerenciar alunos</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-title">Ver alunos matriculados</div>
+        <p>Na aba <strong>"Students"</strong> dentro da DNA VIRAL você vê todos os alunos com acesso, progresso e data de matrícula.</p>
+      </div>
+      <div class="step">
+        <div class="step-title">Adicionar aluno manualmente</div>
+        <p>Clique em <strong>"Add student"</strong>, informe o e-mail e selecione o grupo correto. Use quando precisar dar acesso gratuito para alguém.</p>
+      </div>
+      <div class="step">
+        <div class="step-title">Alterar grupo de um aluno</div>
+        <p>Clique nos 3 pontinhos ao lado do aluno → <strong>"Edit"</strong> → troque o grupo. Útil quando um aluno fizer upgrade de produto.</p>
+      </div>
+      <div class="step">
+        <div class="step-title">Exportar lista de alunos</div>
+        <p>Clique em <strong>"Export"</strong> na aba Students para baixar uma planilha com nome, e-mail e progresso de todos os alunos.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. CHECKOUTS E VENDAS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">5</div>
+      <h2 class="section-title">Checkouts e esteira de vendas</h2>
+    </div>
+    <div class="highlight">
+      <span class="icon">🛒</span>
+      <p>Os checkouts estão configurados com order bumps para aumentar o ticket médio automaticamente no momento da compra.</p>
+    </div>
+    <div class="groups-list">
+      <div class="group-item">
+        <span class="group-badge">Order Bump</span>
+        <span class="group-name">Do Zero à Monetização → oferece Radar Dark</span>
+        <span class="group-price">+ R$ 47</span>
+      </div>
+      <div class="group-item">
+        <span class="group-badge">Order Bump</span>
+        <span class="group-name">Radar Dark → oferece Do Zero à Monetização</span>
+        <span class="group-price">+ R$ 97</span>
+      </div>
+    </div>
+    <div class="tip">
+      <span class="tip-icon">💡</span>
+      <p>Para copiar o link de vendas de qualquer produto acesse <strong>Produtos → clique no produto → aba Links</strong> e copie o checkout link.</p>
+    </div>
+  </div>
+
+  <!-- 6. BREVO - EMAIL MARKETING -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">6</div>
+      <h2 class="section-title">E-mails automáticos (Brevo)</h2>
+    </div>
+    <p style="color:#BBBBBB; margin-bottom:1.25rem;">Sua conta no Brevo está integrada com a Kiwify via webhook. Os seguintes e-mails são enviados automaticamente:</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-title">E-mail de boas-vindas</div>
+        <p>Enviado automaticamente para o aluno assim que a compra é aprovada, com o link de acesso à plataforma DNA VIRAL.</p>
+      </div>
+      <div class="step">
+        <div class="step-title">Notificação de nova aula</div>
+        <p>Sempre que você publicar uma nova aula, os alunos do curso correspondente recebem um e-mail de notificação automaticamente.</p>
+      </div>
+    </div>
+    <div class="tip">
+      <span class="tip-icon">💡</span>
+      <p>Para acessar o Brevo acesse <strong>brevo.com</strong> com o e-mail <strong>dnaviral.contato@gmail.com</strong>. O plano gratuito permite até 300 e-mails por dia.</p>
+    </div>
+  </div>
+
+  <!-- 7. LAYOUT E PERSONALIZAÇÃO -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">7</div>
+      <h2 class="section-title">Como personalizar o layout</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-title">Acessar o editor visual</div>
+        <p>Em <strong>Área de Membros → DNA VIRAL → aba Personalizations</strong>. O editor visual permite mover seções, trocar banners e reorganizar o layout.</p>
+      </div>
+      <div class="step">
+        <div class="step-title">Trocar o banner principal</div>
+        <p>Clique na seção Banner no editor → clique no slide → troque a imagem. O tamanho recomendado é <strong>1440x500 pixels</strong>.</p>
+      </div>
+      <div class="step">
+        <div class="step-title">Alterações avançadas via CSS</div>
+        <p>Para mudanças de cor e estilo avançadas acesse o ícone <strong>"&lt;/&gt;"</strong> no editor e edite o arquivo <strong>assets/global.css</strong>.</p>
+      </div>
+    </div>
+    <div class="tip">
+      <span class="tip-icon">⚠️</span>
+      <p>Ao editar o CSS diretamente, faça uma cópia do código antes de alterar. Se algo quebrar, é possível reverter para a versão original pelo seletor de versões no editor.</p>
+    </div>
+  </div>
+
+  <!-- SUPORTE -->
+  <div class="contact-card">
+    <h3>Precisa de ajuda?</h3>
+    <p>Qualquer dúvida sobre a plataforma, entre em contato com nossa equipe.</p>
+    <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+      <a class="contact-btn" href="https://wa.me/5561983111739" target="_blank">📱 Thiago Offredi</a>
+      <a class="contact-btn" href="https://wa.me/5561986086560" target="_blank">📱 Rafael Almeida</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>Desenvolvido por <strong>TJT Tecnologia</strong> · Plataforma DNA Viral · Dailson Laurentino</p>
+</footer>
+
+</body>
+</html>
